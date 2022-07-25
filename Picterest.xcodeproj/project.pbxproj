@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B74170D1288EBAEA0087703C /* PhotoInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74170D0288EBAEA0087703C /* PhotoInfoDTO.swift */; };
+		B74170D3288EBAF80087703C /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74170D2288EBAF80087703C /* PhotoInfo.swift */; };
 		DE15E65C28604278003DD2F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE15E65B28604278003DD2F5 /* AppDelegate.swift */; };
 		DE15E65E28604278003DD2F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE15E65D28604278003DD2F5 /* SceneDelegate.swift */; };
 		DE15E66028604278003DD2F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE15E65F28604278003DD2F5 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B74170D0288EBAEA0087703C /* PhotoInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoDTO.swift; sourceTree = "<group>"; };
+		B74170D2288EBAF80087703C /* PhotoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
 		DE15E65828604278003DD2F5 /* Picterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE15E65B28604278003DD2F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE15E65D28604278003DD2F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B74170CE288EBAC50087703C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B74170D0288EBAEA0087703C /* PhotoInfoDTO.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B74170CF288EBAD80087703C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B74170D2288EBAF80087703C /* PhotoInfo.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		DE15E64F28604278003DD2F5 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +76,8 @@
 		DE15E65A28604278003DD2F5 /* Picterest */ = {
 			isa = PBXGroup;
 			children = (
+				B74170CF288EBAD80087703C /* Domain */,
+				B74170CE288EBAC50087703C /* Network */,
 				DE15E65B28604278003DD2F5 /* AppDelegate.swift */,
 				DE15E65D28604278003DD2F5 /* SceneDelegate.swift */,
 				DE15E65F28604278003DD2F5 /* ViewController.swift */,
@@ -140,7 +162,9 @@
 			files = (
 				DE15E66028604278003DD2F5 /* ViewController.swift in Sources */,
 				DE15E65C28604278003DD2F5 /* AppDelegate.swift in Sources */,
+				B74170D1288EBAEA0087703C /* PhotoInfoDTO.swift in Sources */,
 				DE15E65E28604278003DD2F5 /* SceneDelegate.swift in Sources */,
+				B74170D3288EBAF80087703C /* PhotoInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
