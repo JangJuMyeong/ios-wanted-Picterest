@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PhotoInfoResponse : Codable {
+struct PhotoInfoResponseDTO : Codable {
     let photoList: [PhotoInfoDTO]
 }
 
@@ -42,5 +42,11 @@ struct Links : Codable {
         case unsplash = "self"
         case downloadLocation = "download_location"
         case html, download
+    }
+}
+
+extension PhotoInfoDTO {
+    func toDomain() -> PhotoInfo {
+        return PhotoInfo(width: width, height: height, urls: urls, links: links)
     }
 }
