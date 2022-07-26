@@ -7,7 +7,7 @@
 
 import Foundation
 struct APIEndpoints {
-    static func getPhotosInfo(with photoInfoRequestDTO: PhotoInfoRequestDTO) -> EndPoint<PhotoInfoResponseDTO> {
+    static func getPhotosInfo(with photoInfoRequestDTO: PhotoInfoRequestDTO) -> EndPoint<[PhotoInfoResponseDTO]> {
         return EndPoint(baseURL: "https://api.unsplash.com/",
                         path: "photos",
                         method: .get,

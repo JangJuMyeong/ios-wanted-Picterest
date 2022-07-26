@@ -8,10 +8,6 @@
 import Foundation
 
 struct PhotoInfoResponseDTO : Codable {
-    let photoList: [PhotoInfoDTO]
-}
-
-struct PhotoInfoDTO : Codable {
     let width : Int
     let height : Int
     let urls : Urls
@@ -45,7 +41,7 @@ struct Links : Codable {
     }
 }
 
-extension PhotoInfoDTO {
+extension PhotoInfoResponseDTO {
     func toDomain() -> PhotoInfo {
         return PhotoInfo(width: width, height: height, urls: urls, links: links)
     }

@@ -25,7 +25,7 @@ class PhotoInfoRepository {
             switch result {
             case .success(let responesDTO) :
                 var photoInfoList = [PhotoInfo]()
-                responesDTO.photoList.forEach { info in
+                responesDTO.forEach { info in
                     photoInfoList.append(info.toDomain())
                 }
                 completion(.success(photoInfoList))

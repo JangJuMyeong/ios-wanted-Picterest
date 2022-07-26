@@ -38,7 +38,7 @@ extension Requestable {
         urlRequest.httpMethod = method.rawValue
         
         headers?.forEach { key,value in
-            urlRequest.setValue(key, forHTTPHeaderField: "\(value)")
+            urlRequest.setValue(value, forHTTPHeaderField: "\(key)")
         }
         
         return urlRequest
