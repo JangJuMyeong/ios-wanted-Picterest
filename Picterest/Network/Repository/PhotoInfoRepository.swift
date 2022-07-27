@@ -39,15 +39,19 @@ class PhotoInfoRepository {
         if let url = NSURL(string: url), let data = imageCache.object(forKey: url) {
             completion(.success(data as Data))
         } else {
-            let endpoint = APIEndpoints.getImage(with: url)
-            provider.request(with: endpoint) { result in
-                switch result {
-                case .success(let data) :
-                    completion(.success(data))
-                case .failure(let error) :
-                    completion(.failure(error))
+//            let endpoint = APIEndpoints.getImage(with: url)
+            if let url = URL(string: url) {
+                provider.request(url) { result in
+                    switch result {
+                    case .success(let data) :
+                        self.imageCache.setObject(data as NSData, forKey: url as NSURL)
+                        completion(.success(data))
+                    case .failure(let error) :
+                        completion(.failure(error))
+                    }
                 }
             }
+            
         }
     }
 }

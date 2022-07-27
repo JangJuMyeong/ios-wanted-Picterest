@@ -9,20 +9,27 @@ import Foundation
 import UIKit
 
 class ImagesViewModel {
-    var photoList = Observable<[PhotoInfo]>([])
     private let repository = PhotoInfoRepository()
+    var photoList = Observable<[PhotoInfo]>([])
+    var viewState = Observable<ViewState>(ViewState.idle)
     
     subscript(indexPath: IndexPath) -> PhotoInfo {
       return photoList.value[indexPath.row]
     }
     
     func viewImageList() {
-        repository.getPhotoList { result in
-            switch result {
-            case .success(let photoInfos):
-                self.photoList.value = photoInfos
-            case .failure(let error):
-                print(error)
+        if viewState.value == .idle {
+            viewState.value = .isLoding
+            repository.getPhotoList { result in
+                switch result {
+                case .success(let photoInfos):
+                    photoInfos.forEach { photoinfo in
+                        self.photoList.value.append(photoinfo)
+                    }
+                    self.viewState.value = .idle
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
