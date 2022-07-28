@@ -23,7 +23,7 @@ class ImagesViewModel {
             repository.getPhotoList { result in
                 switch result {
                 case .success(let photoInfos):
-                    self.photoList.value = photoInfos
+                    self.photoList.value.append(contentsOf: photoInfos)
                     self.viewState.value = .idle
                 case .failure(let error):
                     print(error)

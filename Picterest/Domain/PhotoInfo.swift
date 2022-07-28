@@ -13,4 +13,5 @@ struct PhotoInfo {
     let height : Int
     let urls : Urls
     let links : Links
+    var isSaved : Bool
 }

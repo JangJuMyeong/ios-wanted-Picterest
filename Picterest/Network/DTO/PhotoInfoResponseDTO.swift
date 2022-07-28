@@ -44,6 +44,6 @@ struct Links : Codable {
 
 extension PhotoInfoResponseDTO {
     func toDomain() -> PhotoInfo {
-        return PhotoInfo(id: id, width: width, height: height, urls: urls, links: links)
+        return PhotoInfo(id: id, width: width, height: height, urls: urls, links: links, isSaved: false)
     }
 }

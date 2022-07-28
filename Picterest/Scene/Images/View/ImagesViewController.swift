@@ -57,7 +57,9 @@ extension ImagesViewController: UICollectionViewDataSource {
         
         cell.viewController = self
         cell.photoCountLabel.text = "\(indexPath.row)번째 사진"
+        cell.setButtonImage(isSaved: model.isSaved)
         cell.acceptSaveMemo = { memo in
+            self.viewModel.photoList.value[indexPath.row].isSaved = true
             print(memo)
         }
         

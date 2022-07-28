@@ -12,7 +12,6 @@ class PhotoInfoRepository {
     private let provider: Provider
     private var imageCache = NSCache<NSURL,NSData>()
     private var currentPage: Int = 1
-    private var photoInfoList = [PhotoInfo]()
     
     init(provider: Provider = ProviderImpl()) {
         self.provider = provider
@@ -25,10 +24,11 @@ class PhotoInfoRepository {
         provider.request(with: endpoint) { result in
             switch result {
             case .success(let responesDTO):
+                var photoInfoList = [PhotoInfo]()
                 responesDTO.forEach { info in
-                    self.photoInfoList.append(info.toDomain())
+                    photoInfoList.append(info.toDomain())
                 }
-                completion(.success(self.photoInfoList))
+                completion(.success(photoInfoList))
             case .failure(let error):
                 completion(.failure(error))
             }
