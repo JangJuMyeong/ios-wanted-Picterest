@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -61,39 +60,36 @@
                                                         <constraint firstAttribute="height" constant="40" id="cU9-Xz-Enc"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjz-eB-lt0">
-                                                    <rect key="frame" x="10" y="10" width="20" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="W3U-X9-iQy"/>
-                                                        <constraint firstAttribute="width" constant="20" id="yxX-pU-W3u"/>
-                                                    </constraints>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain">
-                                                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="15"/>
-                                                    </buttonConfiguration>
-                                                    <connections>
-                                                        <action selector="tapSaveButton:" destination="3JC-st-FEA" eventType="touchUpInside" id="21l-PC-CJM"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0번째 사진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-y3-jx2">
                                                     <rect key="frame" x="210" y="12" width="57" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykM-EM-4Te">
+                                                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="UxC-Tc-ejR"/>
+                                                        <constraint firstAttribute="height" constant="20" id="Z5I-xQ-0YB"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="tapSaveButton:" destination="3JC-st-FEA" eventType="touchUpInside" id="FGD-1D-hRb"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="qKw-Q7-uXx" secondAttribute="bottom" id="AFG-ii-rBZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="tqq-y3-jx2" secondAttribute="trailing" constant="10" id="BBC-6b-cZa"/>
                                                 <constraint firstItem="qKw-Q7-uXx" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" id="Bdv-hL-a1N"/>
-                                                <constraint firstItem="bjz-eB-lt0" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" constant="10" id="C8e-3v-61n"/>
                                                 <constraint firstAttribute="trailing" secondItem="XHB-1T-R4r" secondAttribute="trailing" id="CY4-En-1xZ"/>
+                                                <constraint firstItem="ykM-EM-4Te" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="OSP-Pv-7U5"/>
                                                 <constraint firstItem="XHB-1T-R4r" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" id="WM8-LI-19G"/>
                                                 <constraint firstItem="XHB-1T-R4r" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="XfR-se-jZa"/>
+                                                <constraint firstItem="ykM-EM-4Te" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" constant="10" id="d9Z-dp-Q0w"/>
                                                 <constraint firstItem="qKw-Q7-uXx" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="i6G-QS-ATa"/>
-                                                <constraint firstItem="bjz-eB-lt0" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="iHf-sg-zeq"/>
                                                 <constraint firstItem="tqq-y3-jx2" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="taj-bj-qU8"/>
                                                 <constraint firstItem="qKw-Q7-uXx" firstAttribute="centerX" secondItem="tJV-as-JVC" secondAttribute="centerX" id="utC-Nu-Dhc"/>
                                                 <constraint firstAttribute="trailing" secondItem="qKw-Q7-uXx" secondAttribute="trailing" id="zDN-ea-mq8"/>
@@ -103,7 +99,7 @@
                                         <connections>
                                             <outlet property="photoCountLabel" destination="tqq-y3-jx2" id="DUw-k6-Qjg"/>
                                             <outlet property="photoImageView" destination="qKw-Q7-uXx" id="xdN-Y5-E8M"/>
-                                            <outlet property="saveButton" destination="bjz-eB-lt0" id="fup-jR-imJ"/>
+                                            <outlet property="saveButton" destination="ykM-EM-4Te" id="19r-V4-5aR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

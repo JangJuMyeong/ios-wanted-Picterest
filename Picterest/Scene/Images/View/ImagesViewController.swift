@@ -11,33 +11,26 @@ class ImagesViewController: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     let viewModel = ImagesViewModel()
-    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setInit()
+        setData()
+    }
+    
+    private func setInit() {
         let layout = PhotoCollectionViewLayout()
         layout.delegate = self
         self.photoCollectionView.collectionViewLayout = layout
         self.photoCollectionView.dataSource = self
         self.photoCollectionView.delegate = self
-        setData()
     }
     
     private func setData() {
-//        viewModel.viewState.bind { state in
-//            if state == .idle {
-//
-//            } else {
-//                self.photoCollectionView.register(PhotoCollectionIndecatorView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PhotoCollectionIndecatorView.identifier)
-//            }
-//        }
         viewModel.viewImageList()
         viewModel.photoList.bind { photoList in
             DispatchQueue.main.async {
-//                let indexPaths = Array(self.index...(self.index + 14)).map { IndexPath(item: $0, section: 0) }
-//                self.photoCollectionView.reloadItems(at: indexPaths)
-//                self.index += 15
-                self.photoCollectionView.reloadData()
+                self.photoCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
     }
@@ -62,7 +55,11 @@ extension ImagesViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
         let model = viewModel[indexPath]
         
+        cell.viewController = self
         cell.photoCountLabel.text = "\(indexPath.row)번째 사진"
+        cell.acceptSaveMemo = { memo in
+            print(memo)
+        }
         
         viewModel.loadImage(url: model.urls.small) { result in
             switch result {
@@ -75,10 +72,6 @@ extension ImagesViewController: UICollectionViewDataSource {
             }
         }
         
-        cell.pressButton = { [unowned self] in
-            print(self.viewModel.viewState)
-        }
-        
         return cell
     }
 }
@@ -89,10 +82,10 @@ extension ImagesViewController: UICollectionViewDelegate, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > photoCollectionView.contentSize.height - scrollView.frame.size.height {
-            print("call")
             viewModel.viewImageList()
         }
     }
 }
+
 
 
