@@ -121,12 +121,18 @@
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                     <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14"/>
                                                     </buttonConfiguration>
 =======
                                                     <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
 >>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
+=======
+                                                    <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14"/>
+                                                    </buttonConfiguration>
+>>>>>>> 17ea788 ([#1] fix : ColectionView 스크롤시 Button 이미지 다시 리셋되던것 수정)
                                                     <connections>
                                                         <action selector="tapSaveButton:" destination="3JC-st-FEA" eventType="touchUpInside" id="FGD-1D-hRb"/>
                                                     </connections>

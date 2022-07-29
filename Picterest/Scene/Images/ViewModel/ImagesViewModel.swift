@@ -25,6 +25,7 @@ class ImagesViewModel {
                 case .success(let photoInfos):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     self.photoList.value.append(contentsOf: photoInfos)
 =======
                     photoInfos.forEach { photoinfo in
@@ -34,6 +35,9 @@ class ImagesViewModel {
 =======
                     self.photoList.value = photoInfos
 >>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
+=======
+                    self.photoList.value.append(contentsOf: photoInfos)
+>>>>>>> 17ea788 ([#1] fix : ColectionView 스크롤시 Button 이미지 다시 리셋되던것 수정)
                     self.viewState.value = .idle
                 case .failure(let error):
                     print(error)

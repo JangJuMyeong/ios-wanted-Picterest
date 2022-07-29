@@ -15,10 +15,12 @@ enum AcceptType {
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
-    weak var viewController: UIViewController?
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var photoCountLabel: UILabel!
     
+    weak var viewController: UIViewController?
     private var cornerRadius: CGFloat = 15
-    var acceptSaved : (() -> Void)?
     var acceptSaveMemo : ((String) -> Void)?
     
     override func awakeFromNib() {
@@ -26,10 +28,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = cornerRadius
         contentView.layer.masksToBounds = true
     }
-    
-    @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var photoCountLabel: UILabel!
     
     @IBAction func tapSaveButton(_ sender: UIButton) {
         if sender.isSelected {
@@ -51,6 +49,18 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func setButtonImage(isSaved: Bool) {
+        if isSaved {
+            saveButton.isSelected = true
+            saveButton.tintColor = .yellow
+            saveButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            saveButton.isSelected = false
+            saveButton.tintColor = .white
+            saveButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+    }
+    
     private func showSavedAlert() -> UIAlertController {
         let alert = UIAlertController(title: "사진 저장", message: "사진을 저장하시겠습니까?", preferredStyle: .alert)
         let cancleAction = UIAlertAction(title: "취소", style: .destructive)
@@ -64,7 +74,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func showCancleAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "사진 저장 취소", message: "사진을 저장을 취소 하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "사진 저장 취소", message: "사진을 저장을 취소하시겠습니까?", preferredStyle: .alert)
         let cancleAction = UIAlertAction(title: "취소", style: .destructive)
         let accpetCancle = UIAlertAction(title: "확인", style: .default) { action in
             self.toggleSaveButton()

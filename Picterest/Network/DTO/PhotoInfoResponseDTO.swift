@@ -52,9 +52,13 @@ struct Links : Codable {
 extension PhotoInfoResponseDTO {
     func toDomain() -> PhotoInfo {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return PhotoInfo(id: id, width: width, height: height, urls: urls, links: links, isSaved: false)
 =======
         return PhotoInfo(id: id, width: width, height: height, urls: urls, links: links)
 >>>>>>> 2c2fad8 ([#3] fix : Id값 추가하다록 수정)
+=======
+        return PhotoInfo(id: id, width: width, height: height, urls: urls, links: links, isSaved: false)
+>>>>>>> 17ea788 ([#1] fix : ColectionView 스크롤시 Button 이미지 다시 리셋되던것 수정)
     }
 }

@@ -13,9 +13,12 @@ class PhotoInfoRepository {
     private var imageCache = NSCache<NSURL,NSData>()
     private var currentPage: Int = 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private var photoInfoList = [PhotoInfo]()
 >>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
+=======
+>>>>>>> 17ea788 ([#1] fix : ColectionView 스크롤시 Button 이미지 다시 리셋되던것 수정)
     
     init(provider: Provider = ProviderImpl()) {
         self.provider = provider
@@ -29,17 +32,25 @@ class PhotoInfoRepository {
             switch result {
             case .success(let responesDTO):
 <<<<<<< HEAD
+<<<<<<< HEAD
                 var photoInfoList = [PhotoInfo]()
 =======
 >>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
+=======
+                var photoInfoList = [PhotoInfo]()
+>>>>>>> 17ea788 ([#1] fix : ColectionView 스크롤시 Button 이미지 다시 리셋되던것 수정)
                 responesDTO.forEach { info in
-                    self.photoInfoList.append(info.toDomain())
+                    photoInfoList.append(info.toDomain())
                 }
+<<<<<<< HEAD
 <<<<<<< HEAD
                 completion(.success(photoInfoList))
 =======
                 completion(.success(self.photoInfoList))
 >>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
+=======
+                completion(.success(photoInfoList))
+>>>>>>> 17ea788 ([#1] fix : ColectionView 스크롤시 Button 이미지 다시 리셋되던것 수정)
             case .failure(let error):
                 completion(.failure(error))
             }
