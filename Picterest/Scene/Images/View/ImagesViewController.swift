@@ -6,13 +6,17 @@
 import UIKit
 
 class ImagesViewController: UIViewController {
-    
-    
+
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     let viewModel = ImagesViewModel()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    let fileManger = ImageFileManger()
+    
+>>>>>>> 46ff32b ([#5] feat : 두번쨰 화면 CollectionView 구성 및 기능 구현)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +48,12 @@ class ImagesViewController: UIViewController {
         self.photoCollectionView.delegate = self
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        NotificationCenter.default.addObserver(self, selector: #selector(deletImage(_:)), name: .cancleSavedImage, object: nil)
+>>>>>>> 46ff32b ([#5] feat : 두번쨰 화면 CollectionView 구성 및 기능 구현)
     }
-    
+
     private func setData() {
         viewModel.viewImageList()
         viewModel.photoList.bind { photoList in
@@ -73,6 +81,16 @@ class ImagesViewController: UIViewController {
             }
         }
     }
+    
+    @objc func deletImage(_ notification: Notification) {
+        let model = notification.object as! ImageInfo
+        if let index = viewModel.photoList.value.firstIndex(where: {$0.id == model.id}) {
+            viewModel.photoList.value[index].isSaved = false
+            DispatchQueue.main.async {
+                self.photoCollectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
+     }
 }
 
 //MARK: - PhotoCollectionViewLayout
@@ -99,9 +117,12 @@ extension ImagesViewController: UICollectionViewDataSource {
         cell.viewController = self
         cell.photoCountLabel.text = "\(indexPath.row)번째 사진"
         cell.setButtonImage(isSaved: model.isSaved)
-        cell.acceptSaveMemo = { memo in
-            self.viewModel.photoList.value[indexPath.row].isSaved = true
-            print(memo)
+        cell.cancleSaveImage = {
+            self.viewModel.deleteImage(id: model.id)
+        }
+        cell.acceptSaveMemo = { [weak self] memo in
+            self?.viewModel.photoList.value[indexPath.row].isSaved = true
+            self?.viewModel.savedImage(image: cell.photoImageView.image ?? UIImage(), memo: memo, photoInfo: model)
         }
 =======
         cell.photoCountLabel.text = "\(indexPath.row)번째 사진"
@@ -117,6 +138,7 @@ extension ImagesViewController: UICollectionViewDataSource {
 >>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
         
         viewModel.loadImage(url: model.urls.small) { result in
+            print(model.urls.small)
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
