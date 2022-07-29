@@ -22,6 +22,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     weak var viewController: UIViewController?
     private var cornerRadius: CGFloat = 15
     var acceptSaveMemo : ((String) -> Void)?
+    var cancleSaveImage: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,6 +59,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             saveButton.isSelected = false
             saveButton.tintColor = .white
             saveButton.setImage(UIImage(systemName: "star"), for: .normal)
+            cancleSaveImage?()
         }
     }
     
