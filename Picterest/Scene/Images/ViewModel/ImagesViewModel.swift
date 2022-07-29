@@ -23,7 +23,13 @@ class ImagesViewModel {
             repository.getPhotoList { result in
                 switch result {
                 case .success(let photoInfos):
+<<<<<<< HEAD
                     self.photoList.value.append(contentsOf: photoInfos)
+=======
+                    photoInfos.forEach { photoinfo in
+                        self.photoList.value.append(photoinfo)
+                    }
+>>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
                     self.viewState.value = .idle
                 case .failure(let error):
                     print(error)

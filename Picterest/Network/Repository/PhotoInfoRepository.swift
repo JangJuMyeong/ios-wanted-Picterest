@@ -39,6 +39,7 @@ class PhotoInfoRepository {
         if let url = NSURL(string: url), let data = imageCache.object(forKey: url) {
             completion(.success(data as Data))
         } else {
+<<<<<<< HEAD
             if let url = URL(string: url) {
                 provider.request(url) { result in
                     switch result {
@@ -46,10 +47,21 @@ class PhotoInfoRepository {
                         self.imageCache.setObject(data as NSData, forKey: url as NSURL)
                         completion(.success(data))
                     case .failure(let error):
+=======
+//            let endpoint = APIEndpoints.getImage(with: url)
+            if let url = URL(string: url) {
+                provider.request(url) { result in
+                    switch result {
+                    case .success(let data) :
+                        self.imageCache.setObject(data as NSData, forKey: url as NSURL)
+                        completion(.success(data))
+                    case .failure(let error) :
+>>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
                         completion(.failure(error))
                     }
                 }
             }
+            
         }
     }
 }

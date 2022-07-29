@@ -24,11 +24,17 @@
 		B741710E288FB83D0087703C /* PhotoInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741710D288FB83D0087703C /* PhotoInfoRepository.swift */; };
 		B7417112288FC0360087703C /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7417111288FC0360087703C /* APIEndPoints.swift */; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		B772EEA02890478200B65AAC /* PhotoCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EE9F2890478200B65AAC /* PhotoCollectionViewLayout.swift */; };
 		B772EEA22890F23800B65AAC /* PhotoCollectionIndecatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EEA12890F23800B65AAC /* PhotoCollectionIndecatorView.swift */; };
 		B772EEA42890F4F900B65AAC /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EEA32890F4F900B65AAC /* ViewState.swift */; };
 =======
 >>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
+=======
+		B772EEA02890478200B65AAC /* PhotoCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EE9F2890478200B65AAC /* PhotoCollectionViewLayout.swift */; };
+		B772EEA22890F23800B65AAC /* PhotoCollectionIndecatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EEA12890F23800B65AAC /* PhotoCollectionIndecatorView.swift */; };
+		B772EEA42890F4F900B65AAC /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EEA32890F4F900B65AAC /* ViewState.swift */; };
+>>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
 		B7939EA9288FCFFC00C478E2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EA8288FCFFC00C478E2 /* Observable.swift */; };
 		B7939EAB288FD01500C478E2 /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EAA288FD01500C478E2 /* ImagesViewModel.swift */; };
 		B7939EAD288FD0BF00C478E2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */; };
@@ -60,11 +66,17 @@
 		B741710D288FB83D0087703C /* PhotoInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoRepository.swift; sourceTree = "<group>"; };
 		B7417111288FC0360087703C /* APIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		B772EE9F2890478200B65AAC /* PhotoCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B772EEA12890F23800B65AAC /* PhotoCollectionIndecatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionIndecatorView.swift; sourceTree = "<group>"; };
 		B772EEA32890F4F900B65AAC /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 =======
 >>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
+=======
+		B772EE9F2890478200B65AAC /* PhotoCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewLayout.swift; sourceTree = "<group>"; };
+		B772EEA12890F23800B65AAC /* PhotoCollectionIndecatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionIndecatorView.swift; sourceTree = "<group>"; };
+		B772EEA32890F4F900B65AAC /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+>>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
 		B7939EA8288FCFFC00C478E2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B7939EAA288FD01500C478E2 /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
 		B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
@@ -130,9 +142,13 @@
 				B741710A288FB52B0087703C /* Decoder.swift */,
 				B7939EA8288FCFFC00C478E2 /* Observable.swift */,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				B772EEA32890F4F900B65AAC /* ViewState.swift */,
 =======
 >>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
+=======
+				B772EEA32890F4F900B65AAC /* ViewState.swift */,
+>>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
 				B74170E0288ECFEF0087703C /* Extension */,
 			);
 			path = Helper;
@@ -178,6 +194,86 @@
 				B7417111288FC0360087703C /* APIEndPoints.swift */,
 			);
 			path = Network;
+<<<<<<< HEAD
+			sourceTree = "<group>";
+		};
+		B772EE97289045D400B65AAC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B772EE9C2890461100B65AAC /* ViewModel */,
+				B772EE99289045FC00B65AAC /* View */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		B772EE98289045F200B65AAC /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				B772EE9B2890460D00B65AAC /* ViewModel */,
+				B772EE9A2890460800B65AAC /* View */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
+		B772EE99289045FC00B65AAC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE15E65F28604278003DD2F5 /* ImagesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B772EE9A2890460800B65AAC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B772EE9B2890460D00B65AAC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B7939EAE288FD0CB00C478E2 /* SavedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B772EE9C2890461100B65AAC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B7939EAA288FD01500C478E2 /* ImagesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B772EE9D289046EC00B65AAC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B772EE9E2890470600B65AAC /* CollectionView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B772EE9E2890470600B65AAC /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B7939EB2288FD9C300C478E2 /* PhotoCollectionViewCell.swift */,
+				B772EE9F2890478200B65AAC /* PhotoCollectionViewLayout.swift */,
+				B772EEA12890F23800B65AAC /* PhotoCollectionIndecatorView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		B7939EA5288FCB3500C478E2 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				B772EE98289045F200B65AAC /* Saved */,
+				B772EE97289045D400B65AAC /* Images */,
+			);
+			path = Scene;
+=======
+>>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
 			sourceTree = "<group>";
 		};
 		B772EE97289045D400B65AAC /* Images */ = {
@@ -257,34 +353,6 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		B7939EA5288FCB3500C478E2 /* Scene */ = {
-			isa = PBXGroup;
-			children = (
-				B7939EA7288FCFDA00C478E2 /* ViewModel */,
-				B7939EA6288FCFD100C478E2 /* View */,
-			);
-			path = Scene;
-			sourceTree = "<group>";
-		};
-		B7939EA6288FCFD100C478E2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B7939EB2288FD9C300C478E2 /* PhotoCollectionViewCell.swift */,
-				DE15E65F28604278003DD2F5 /* ImagesViewController.swift */,
-				B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B7939EA7288FCFDA00C478E2 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				B7939EAA288FD01500C478E2 /* ImagesViewModel.swift */,
-				B7939EAE288FD0CB00C478E2 /* SavedViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		DE15E64F28604278003DD2F5 = {
 			isa = PBXGroup;
 			children = (
@@ -309,9 +377,13 @@
 				B741710F288FC0230087703C /* Data */,
 				B74170CE288EBAC50087703C /* Network */,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				B772EE9D289046EC00B65AAC /* Components */,
 =======
 >>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
+=======
+				B772EE9D289046EC00B65AAC /* Components */,
+>>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
 				B7939EA5288FCB3500C478E2 /* Scene */,
 				DE15E65B28604278003DD2F5 /* AppDelegate.swift */,
 				DE15E65D28604278003DD2F5 /* SceneDelegate.swift */,

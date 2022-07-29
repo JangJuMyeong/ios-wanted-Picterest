@@ -8,7 +8,15 @@
 import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
+    
+    var cornerRadius: CGFloat = 15
     var pressButton : (() -> Void)?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentView.layer.cornerRadius = cornerRadius
+        contentView.layer.masksToBounds = true
+    }
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIButton!
