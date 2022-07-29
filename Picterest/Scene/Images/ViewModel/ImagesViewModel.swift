@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ImagesViewModel {
-    private let repository = PhotoInfoRepository()
+    private let repository = MediaInfoRepository()
     var photoList = Observable<[PhotoInfo]>([])
     var viewState = Observable<ViewState>(ViewState.idle)
     
@@ -45,5 +45,19 @@ class ImagesViewModel {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func savedImage(image: UIImage, memo: String, photoInfo: PhotoInfo) {
+        repository.savedImage(image: image, memo: memo, photoInfo: photoInfo) { result in
+            if result {
+                NotificationCenter.default.post(name: .saveImage, object: nil)
+            } else {
+                //에러 핸들링
+            }
+        }
+    }
+    
+    func deleteImage(id: String) {
+        repository.deleteImage(id: id)
     }
 }
