@@ -8,7 +8,7 @@
 import CoreData
 
 protocol CoreDataStorage {
-    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T]
-    func insertImageinfo(imageInfo: ImageInfo) -> Bool
-    func delete(object: NSManagedObject) -> Bool
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>,completion: @escaping ((Result<[T],Error>) -> Void))
+    func insertImageinfo(imageInfo: ImageInfo, completion: @escaping ((Result<Bool,Error>) -> Void))
+    func delete(object: NSManagedObject, completion: @escaping ((Result<Bool,Error>) -> Void))
 }

@@ -8,6 +8,6 @@
 import Foundation
 
 extension Notification.Name {
-    static let saveImage = Notification.Name("saveImage")
+    static let imageDataStatusChange = Notification.Name("imageDataStatusChange")
     static let cancleSavedImage = Notification.Name("cancleSavedImage")
 }

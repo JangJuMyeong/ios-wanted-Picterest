@@ -8,10 +8,16 @@
 import Foundation
 import UIKit
 
+enum ImageFileMangerError: Error {
+    case readError(Error)
+    case saveError(Error)
+    case deleteError(Error)
+}
+
 final class ImageFileManger: FileManged {
     
     func saveImage(image: UIImage, name: String,
-                   onSuccess: @escaping ((String) -> Void)) {
+                   completion: @escaping ((Result<String,Error>) -> Void)) {
         guard let data: Data
                 = image.jpegData(compressionQuality: 1)
                 ?? image.pngData() else { return }
@@ -23,10 +29,11 @@ final class ImageFileManger: FileManged {
             do {
                 if let fileName = directory.appendingPathComponent(name) {
                     try data.write(to: fileName)
-                    onSuccess(fileName.lastPathComponent)
+                    completion(.success(fileName.lastPathComponent))
                 }
             } catch let error as NSError {
-                print("Could not saveImage🥺: \(error), \(error.userInfo)")
+                print("Could not saveImage: \(error), \(error.userInfo)")
+                completion(.failure(ImageFileMangerError.saveError(error)))
             }
         }
     }
@@ -46,7 +53,7 @@ final class ImageFileManger: FileManged {
     }
     
     func deleteImage(named: String,
-                     onSuccess: @escaping ((Bool) -> Void)) {
+                     completion: @escaping ((Result<Bool,Error>) -> Void)) {
         guard let directory = try? FileManager.default.url(for: .documentDirectory,
                                              in: .userDomainMask,
                                              appropriateFor: nil,
@@ -59,14 +66,14 @@ final class ImageFileManger: FileManged {
                     if fileName == named {
                         let filePathName = "\(docuPath)/\(fileName)"
                         try FileManager.default.removeItem(atPath: filePathName)
-                        onSuccess(true)
+                        completion(.success(true))
                         return
                     }
                 }
             }
         } catch let error as NSError {
-            print("Could not deleteImage🥺: \(error), \(error.userInfo)")
-            onSuccess(false)
+            print("Could not deleteImage: \(error), \(error.userInfo)")
+            completion(.failure(ImageFileMangerError.deleteError(error)))
         }
     }
 }

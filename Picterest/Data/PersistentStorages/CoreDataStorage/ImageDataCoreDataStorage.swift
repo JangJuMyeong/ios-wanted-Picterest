@@ -7,6 +7,12 @@
 
 import CoreData
 
+enum CoreDataStorageError: Error {
+    case readError(Error)
+    case saveError(Error)
+    case deleteError(Error)
+}
+
 final class ImageDataCoreDataStorage: CoreDataStorage{
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -23,17 +29,17 @@ final class ImageDataCoreDataStorage: CoreDataStorage{
         return self.persistentContainer.viewContext
     }
     
-    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
+    func fetch<T>(request: NSFetchRequest<T>, completion: @escaping ((Result<[T], Error>) -> Void)) where T : NSManagedObject {
         do {
             let fetchResult = try self.context.fetch(request)
-            return fetchResult
+            completion(.success(fetchResult))
         } catch {
             print(error.localizedDescription)
-            return []
+            completion(.failure(CoreDataStorageError.readError(error)))
         }
     }
     
-    func insertImageinfo(imageInfo: ImageInfo) -> Bool {
+    func insertImageinfo(imageInfo: ImageInfo, completion: @escaping ((Result<Bool, Error>) -> Void)) {
         let entity = NSEntityDescription.entity(forEntityName: "ImageData", in: self.context)
         if let entity = entity {
             let managedObject = NSManagedObject(entity: entity, insertInto: self.context)
@@ -44,23 +50,23 @@ final class ImageDataCoreDataStorage: CoreDataStorage{
             managedObject.setValue(imageInfo.ratio, forKey: "ratio")
             do {
                 try self.context.save()
-                return true
+                completion(.success(true))
             } catch {
                 assertionFailure("CoreDataStorage Unresolved error \(error), \((error as NSError).userInfo)")
-                return false
+                completion(.failure(CoreDataStorageError.saveError(error)))
             }
         } else {
-            return false
+            completion(.success(false))
         }
     }
     
-    func delete(object: NSManagedObject) -> Bool {
+    func delete(object: NSManagedObject, completion: @escaping ((Result<Bool, Error>) -> Void)) {
         self.context.delete(object)
         do {
             try context.save()
-            return true
+            completion(.success(true))
         } catch {
-            return false
+            completion(.failure(CoreDataStorageError.deleteError(error)))
         }
     }
 }

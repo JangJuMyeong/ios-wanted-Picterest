@@ -35,15 +35,21 @@ class MediaInfoRepository {
                 responesDTO.forEach { info in
                     var model = info.toDomain()
                     let request: NSFetchRequest<ImageData> = ImageData.fetchRequest()
-                    let fetchResult = self.coreDataStarge.fetch(request: request)
-                    fetchResult.forEach { imagedata in
-                        if imagedata.id == model.id {
-                            model.isSaved = true
+                    self.coreDataStarge.fetch(request: request) { result in
+                        switch result {
+                        case .success(let imageDatas):
+                            imageDatas.forEach { imageData in
+                                if imageData.id == model.id {
+                                    model.isSaved = true
+                                }
+                                photoInfoList.append(model)
+                            }
+                            completion(.success(photoInfoList))
+                        case .failure(let error):
+                            completion(.failure(error))
                         }
                     }
-                    photoInfoList.append(model)
                 }
-                completion(.success(photoInfoList))
             case .failure(let error):
                 completion(.failure(error))
             }

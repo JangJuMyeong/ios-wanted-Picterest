@@ -26,11 +26,10 @@ class SavedViewController: UIViewController {
         layout.delegate = self
         savedCollectionView.collectionViewLayout = layout
         savedCollectionView.dataSource = self
-        savedCollectionView.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(saveImage(_:)), name: .saveImage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(imageDataStatusChange(_:)), name: .imageDataStatusChange, object: nil)
     }
     
-    @objc func saveImage(_ notification: Notification) {
+    @objc func imageDataStatusChange(_ notification: Notification) {
         viewModel.viewImageList()
         DispatchQueue.main.async {
             self.savedCollectionView.reloadData()
@@ -67,18 +66,12 @@ extension SavedViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension SavedViewController: SavedCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, ratioForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         return CGFloat(viewModel[indexPath].ratio)
     }
-    
-}
-
-extension SavedViewController: UICollectionViewDelegate {
     
 }
 

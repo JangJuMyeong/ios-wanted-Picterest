@@ -31,6 +31,7 @@
 		B7939EAD288FD0BF00C478E2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */; };
 		B7939EAF288FD0CB00C478E2 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EAE288FD0CB00C478E2 /* SavedViewModel.swift */; };
 		B7939EB3288FD9C300C478E2 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EB2288FD9C300C478E2 /* PhotoCollectionViewCell.swift */; };
+		B7C094742893DA7400C8E0EB /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C094732893DA7400C8E0EB /* UIViewController+.swift */; };
 		B7F0D53C28926FF8006E2DA0 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0D53B28926FF8006E2DA0 /* ImageInfo.swift */; };
 		B7F0D53F289271DA006E2DA0 /* ImageData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7F0D53D289271DA006E2DA0 /* ImageData.xcdatamodeld */; };
 		B7F0D54E289275B1006E2DA0 /* ImageDataCoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0D54D289275B1006E2DA0 /* ImageDataCoreDataStorage.swift */; };
@@ -75,6 +76,7 @@
 		B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		B7939EAE288FD0CB00C478E2 /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewModel.swift; sourceTree = "<group>"; };
 		B7939EB2288FD9C300C478E2 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		B7C094732893DA7400C8E0EB /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		B7F0D53B28926FF8006E2DA0 /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		B7F0D53E289271DA006E2DA0 /* ImageData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageData.xcdatamodel; sourceTree = "<group>"; };
 		B7F0D54D289275B1006E2DA0 /* ImageDataCoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataCoreDataStorage.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				B74170E1288ED0010087703C /* Encodable+.swift */,
 				B7417108288FB0670087703C /* URLSession+.swift */,
 				B7F0D55F2892CB01006E2DA0 /* Notification+.swift */,
+				B7C094732893DA7400C8E0EB /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				DE15E65E28604278003DD2F5 /* SceneDelegate.swift in Sources */,
 				B7939EA9288FCFFC00C478E2 /* Observable.swift in Sources */,
 				B74170D3288EBAF80087703C /* PhotoInfo.swift in Sources */,
+				B7C094742893DA7400C8E0EB /* UIViewController+.swift in Sources */,
 				B7417109288FB0670087703C /* URLSession+.swift in Sources */,
 				B7939EAF288FD0CB00C478E2 /* SavedViewModel.swift in Sources */,
 				B7417101288FA4ED0087703C /* Constants.swift in Sources */,

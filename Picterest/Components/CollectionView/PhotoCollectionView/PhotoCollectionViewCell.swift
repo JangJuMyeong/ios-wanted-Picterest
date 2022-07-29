@@ -55,11 +55,11 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             saveButton.isSelected = true
             saveButton.tintColor = .yellow
             saveButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            
         } else {
             saveButton.isSelected = false
             saveButton.tintColor = .white
             saveButton.setImage(UIImage(systemName: "star"), for: .normal)
-            cancleSaveImage?()
         }
     }
     
@@ -80,6 +80,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let cancleAction = UIAlertAction(title: "취소", style: .destructive)
         let accpetCancle = UIAlertAction(title: "확인", style: .default) { action in
             self.toggleSaveButton()
+            self.cancleSaveImage?()
         }
         
         alert.addAction(cancleAction)
