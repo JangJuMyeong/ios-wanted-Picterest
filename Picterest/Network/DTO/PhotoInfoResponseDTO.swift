@@ -9,9 +9,13 @@ import Foundation
 
 struct PhotoInfoResponseDTO : Codable {
 <<<<<<< HEAD
+<<<<<<< HEAD
     let id : String
 =======
 >>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
+=======
+    let id : String
+>>>>>>> 2c2fad8 ([#3] fix : Id값 추가하다록 수정)
     let width : Int
     let height : Int
     let urls : Urls
@@ -47,6 +51,10 @@ struct Links : Codable {
 
 extension PhotoInfoResponseDTO {
     func toDomain() -> PhotoInfo {
+<<<<<<< HEAD
         return PhotoInfo(id: id, width: width, height: height, urls: urls, links: links, isSaved: false)
+=======
+        return PhotoInfo(id: id, width: width, height: height, urls: urls, links: links)
+>>>>>>> 2c2fad8 ([#3] fix : Id값 추가하다록 수정)
     }
 }

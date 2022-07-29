@@ -15,12 +15,12 @@ class PhotoCollectionViewLayout: UICollectionViewLayout {
     
     weak var delegate : PhotoCollectionViewLayoutDelegate?
     
-    fileprivate var numberOfColumns: Int = 2
-    fileprivate var cellPadding: CGFloat = 3.0
-    fileprivate var cache: [UICollectionViewLayoutAttributes] = []
-    fileprivate var contentHeight: CGFloat = 0.0
+    private var numberOfColumns: Int = 2
+    private var cellPadding: CGFloat = 3.0
+    private var cache: [UICollectionViewLayoutAttributes] = []
+    private var contentHeight: CGFloat = 0.0
     
-    fileprivate var contentWidth: CGFloat {
+    private var contentWidth: CGFloat {
         guard let collectionView = collectionView else {
             return 0.0
         }
