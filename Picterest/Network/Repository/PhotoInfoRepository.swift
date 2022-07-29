@@ -12,6 +12,10 @@ class PhotoInfoRepository {
     private let provider: Provider
     private var imageCache = NSCache<NSURL,NSData>()
     private var currentPage: Int = 1
+<<<<<<< HEAD
+=======
+    private var photoInfoList = [PhotoInfo]()
+>>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
     
     init(provider: Provider = ProviderImpl()) {
         self.provider = provider
@@ -24,11 +28,18 @@ class PhotoInfoRepository {
         provider.request(with: endpoint) { result in
             switch result {
             case .success(let responesDTO):
+<<<<<<< HEAD
                 var photoInfoList = [PhotoInfo]()
+=======
+>>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
                 responesDTO.forEach { info in
-                    photoInfoList.append(info.toDomain())
+                    self.photoInfoList.append(info.toDomain())
                 }
+<<<<<<< HEAD
                 completion(.success(photoInfoList))
+=======
+                completion(.success(self.photoInfoList))
+>>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -40,6 +51,7 @@ class PhotoInfoRepository {
             completion(.success(data as Data))
         } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if let url = URL(string: url) {
                 provider.request(url) { result in
                     switch result {
@@ -49,19 +61,24 @@ class PhotoInfoRepository {
                     case .failure(let error):
 =======
 //            let endpoint = APIEndpoints.getImage(with: url)
+=======
+>>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
             if let url = URL(string: url) {
                 provider.request(url) { result in
                     switch result {
-                    case .success(let data) :
+                    case .success(let data):
                         self.imageCache.setObject(data as NSData, forKey: url as NSURL)
                         completion(.success(data))
+<<<<<<< HEAD
                     case .failure(let error) :
 >>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
+=======
+                    case .failure(let error):
+>>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
                         completion(.failure(error))
                     }
                 }
             }
-            
         }
     }
 }

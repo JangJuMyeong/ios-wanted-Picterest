@@ -52,7 +52,6 @@ class PhotoCollectionViewLayout: UICollectionViewLayout {
             let ratio = delegate?.collectionView(collectionView, ratioForImageAtIndexPath: indexPath) ?? 0
             
             let height = cellPadding * 2 + columnWidth * ratio
-            print(height)
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
             
@@ -69,7 +68,6 @@ class PhotoCollectionViewLayout: UICollectionViewLayout {
             guard let minYoffset = yOffset.min(), let index = yOffset.firstIndex(of: minYoffset) else { return }
             
             column = index
-//            column = column < (numberOfColumns - 1) ? (column + 1) : 0
         }
     }
     

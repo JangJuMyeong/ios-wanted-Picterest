@@ -24,12 +24,16 @@ class ImagesViewModel {
                 switch result {
                 case .success(let photoInfos):
 <<<<<<< HEAD
+<<<<<<< HEAD
                     self.photoList.value.append(contentsOf: photoInfos)
 =======
                     photoInfos.forEach { photoinfo in
                         self.photoList.value.append(photoinfo)
                     }
 >>>>>>> b42669a ([#1] feat : CollectionView 구성 및 초기 Pagination 구현)
+=======
+                    self.photoList.value = photoInfos
+>>>>>>> d153df4 ([#1] feat : 첫번째 페이지 CollectionView 구성 완료)
                     self.viewState.value = .idle
                 case .failure(let error):
                     print(error)
