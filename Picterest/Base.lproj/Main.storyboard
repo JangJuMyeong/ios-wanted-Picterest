@@ -50,6 +50,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="277" height="390"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+<<<<<<< HEAD
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qKw-Q7-uXx">
                                                     <rect key="frame" x="0.0" y="0.0" width="277" height="390"/>
                                                 </imageView>
@@ -62,10 +63,34 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0번째 사진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-y3-jx2">
                                                     <rect key="frame" x="210" y="12" width="57" height="16"/>
+=======
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qKw-Q7-uXx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="277" height="390"/>
+                                                </imageView>
+                                                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHB-1T-R4r">
+                                                    <rect key="frame" x="0.0" y="0.0" width="277" height="50"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="cU9-Xz-Enc"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjz-eB-lt0">
+                                                    <rect key="frame" x="5" y="9.5" width="47" height="31"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="tapSaveButton:" destination="3JC-st-FEA" eventType="touchUpInside" id="21l-PC-CJM"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0번째 사진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-y3-jx2">
+                                                    <rect key="frame" x="210" y="17" width="57" height="16"/>
+>>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+<<<<<<< HEAD
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykM-EM-4Te">
                                                     <rect key="frame" x="10" y="10" width="20" height="20"/>
                                                     <constraints>
@@ -81,17 +106,28 @@
                                                         <action selector="tapSaveButton:" destination="3JC-st-FEA" eventType="touchUpInside" id="FGD-1D-hRb"/>
                                                     </connections>
                                                 </button>
+=======
+>>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="qKw-Q7-uXx" secondAttribute="bottom" id="AFG-ii-rBZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="tqq-y3-jx2" secondAttribute="trailing" constant="10" id="BBC-6b-cZa"/>
                                                 <constraint firstItem="qKw-Q7-uXx" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" id="Bdv-hL-a1N"/>
+<<<<<<< HEAD
                                                 <constraint firstAttribute="trailing" secondItem="XHB-1T-R4r" secondAttribute="trailing" id="CY4-En-1xZ"/>
                                                 <constraint firstItem="ykM-EM-4Te" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="OSP-Pv-7U5"/>
                                                 <constraint firstItem="XHB-1T-R4r" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" id="WM8-LI-19G"/>
                                                 <constraint firstItem="XHB-1T-R4r" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="XfR-se-jZa"/>
                                                 <constraint firstItem="ykM-EM-4Te" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" constant="10" id="d9Z-dp-Q0w"/>
                                                 <constraint firstItem="qKw-Q7-uXx" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="i6G-QS-ATa"/>
+=======
+                                                <constraint firstItem="bjz-eB-lt0" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" constant="5" id="C8e-3v-61n"/>
+                                                <constraint firstAttribute="trailing" secondItem="XHB-1T-R4r" secondAttribute="trailing" id="CY4-En-1xZ"/>
+                                                <constraint firstItem="XHB-1T-R4r" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" id="WM8-LI-19G"/>
+                                                <constraint firstItem="XHB-1T-R4r" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="XfR-se-jZa"/>
+                                                <constraint firstItem="qKw-Q7-uXx" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="i6G-QS-ATa"/>
+                                                <constraint firstItem="bjz-eB-lt0" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="iHf-sg-zeq"/>
+>>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
                                                 <constraint firstItem="tqq-y3-jx2" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="taj-bj-qU8"/>
                                                 <constraint firstItem="qKw-Q7-uXx" firstAttribute="centerX" secondItem="tJV-as-JVC" secondAttribute="centerX" id="utC-Nu-Dhc"/>
                                                 <constraint firstAttribute="trailing" secondItem="qKw-Q7-uXx" secondAttribute="trailing" id="zDN-ea-mq8"/>
@@ -101,7 +137,11 @@
                                         <connections>
                                             <outlet property="photoCountLabel" destination="tqq-y3-jx2" id="DUw-k6-Qjg"/>
                                             <outlet property="photoImageView" destination="qKw-Q7-uXx" id="xdN-Y5-E8M"/>
+<<<<<<< HEAD
                                             <outlet property="saveButton" destination="ykM-EM-4Te" id="19r-V4-5aR"/>
+=======
+                                            <outlet property="saveButton" destination="bjz-eB-lt0" id="fup-jR-imJ"/>
+>>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

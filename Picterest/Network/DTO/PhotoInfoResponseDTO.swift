@@ -8,7 +8,10 @@
 import Foundation
 
 struct PhotoInfoResponseDTO : Codable {
+<<<<<<< HEAD
     let id : String
+=======
+>>>>>>> c49a32d ([#3] fix : Network 요청 잘못된것 수정)
     let width : Int
     let height : Int
     let urls : Urls
