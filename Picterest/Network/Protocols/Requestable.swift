@@ -28,6 +28,7 @@ extension Requestable {
     func getUrlRequest() throws -> URLRequest {
         let url = try makeUrl()
         var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = method.rawValue
         
         if let bodyParameters = try bodyParameters?.toDicionary() {
             if !bodyParameters.isEmpty {
@@ -35,16 +36,14 @@ extension Requestable {
             }
         }
         
-        urlRequest.httpMethod = method.rawValue
-        
         headers?.forEach { key,value in
-            urlRequest.setValue(key, forHTTPHeaderField: "\(value)")
+            urlRequest.setValue(value, forHTTPHeaderField: "\(key)")
         }
         
         return urlRequest
     }
     
-    func makeUrl() throws -> URL {
+    private func makeUrl() throws -> URL {
         let fullPath = "\(baseURL)\(path)"
         guard var urlComponents = URLComponents(string: fullPath) else { throw NetworkError.componentsError}
         

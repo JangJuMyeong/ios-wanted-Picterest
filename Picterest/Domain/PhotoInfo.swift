@@ -8,8 +8,10 @@
 import Foundation
 
 struct PhotoInfo {
+    let id : String
     let width : Int
     let height : Int
     let urls : Urls
     let links : Links
+    var isSaved : Bool
 }

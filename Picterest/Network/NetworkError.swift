@@ -13,7 +13,7 @@ enum NetworkError: Error {
     case urlRequestError(Error)
     case serverError(ServerError)
     case emptyData
-    case parsingError(Error)
+    case parsingError
     case decodingError(Error)
     
     var errorDescription : String {

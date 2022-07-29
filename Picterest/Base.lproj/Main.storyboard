@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,18 +28,102 @@
         <!--Images-->
         <scene sceneID="LcZ-On-nh5">
             <objects>
-                <viewController id="Yd9-RG-K5r" sceneMemberID="viewController">
+                <viewController id="Yd9-RG-K5r" customClass="ImagesViewController" customModule="Picterest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0or-fr-dFS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q83-9A-TeQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aFU-Qc-upi">
+                                    <size key="itemSize" width="277" height="390"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="3JC-st-FEA" customClass="PhotoCollectionViewCell" customModule="Picterest" customModuleProvider="target">
+                                        <rect key="frame" x="68.5" y="0.0" width="277" height="390"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tJV-as-JVC">
+                                            <rect key="frame" x="0.0" y="0.0" width="277" height="390"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qKw-Q7-uXx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="277" height="390"/>
+                                                </imageView>
+                                                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHB-1T-R4r">
+                                                    <rect key="frame" x="0.0" y="0.0" width="277" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="cU9-Xz-Enc"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0번째 사진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-y3-jx2">
+                                                    <rect key="frame" x="210" y="12" width="57" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykM-EM-4Te">
+                                                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="UxC-Tc-ejR"/>
+                                                        <constraint firstAttribute="height" constant="20" id="Z5I-xQ-0YB"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="tapSaveButton:" destination="3JC-st-FEA" eventType="touchUpInside" id="FGD-1D-hRb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="qKw-Q7-uXx" secondAttribute="bottom" id="AFG-ii-rBZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="tqq-y3-jx2" secondAttribute="trailing" constant="10" id="BBC-6b-cZa"/>
+                                                <constraint firstItem="qKw-Q7-uXx" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" id="Bdv-hL-a1N"/>
+                                                <constraint firstAttribute="trailing" secondItem="XHB-1T-R4r" secondAttribute="trailing" id="CY4-En-1xZ"/>
+                                                <constraint firstItem="ykM-EM-4Te" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="OSP-Pv-7U5"/>
+                                                <constraint firstItem="XHB-1T-R4r" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" id="WM8-LI-19G"/>
+                                                <constraint firstItem="XHB-1T-R4r" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="XfR-se-jZa"/>
+                                                <constraint firstItem="ykM-EM-4Te" firstAttribute="leading" secondItem="tJV-as-JVC" secondAttribute="leading" constant="10" id="d9Z-dp-Q0w"/>
+                                                <constraint firstItem="qKw-Q7-uXx" firstAttribute="top" secondItem="tJV-as-JVC" secondAttribute="top" id="i6G-QS-ATa"/>
+                                                <constraint firstItem="tqq-y3-jx2" firstAttribute="centerY" secondItem="XHB-1T-R4r" secondAttribute="centerY" id="taj-bj-qU8"/>
+                                                <constraint firstItem="qKw-Q7-uXx" firstAttribute="centerX" secondItem="tJV-as-JVC" secondAttribute="centerX" id="utC-Nu-Dhc"/>
+                                                <constraint firstAttribute="trailing" secondItem="qKw-Q7-uXx" secondAttribute="trailing" id="zDN-ea-mq8"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="277" height="390"/>
+                                        <connections>
+                                            <outlet property="photoCountLabel" destination="tqq-y3-jx2" id="DUw-k6-Qjg"/>
+                                            <outlet property="photoImageView" destination="qKw-Q7-uXx" id="xdN-Y5-E8M"/>
+                                            <outlet property="saveButton" destination="ykM-EM-4Te" id="19r-V4-5aR"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7WE-NX-cN5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7WE-NX-cN5" firstAttribute="trailing" secondItem="Q83-9A-TeQ" secondAttribute="trailing" id="8RB-3e-31V"/>
+                            <constraint firstItem="Q83-9A-TeQ" firstAttribute="leading" secondItem="7WE-NX-cN5" secondAttribute="leading" id="AYf-WT-arW"/>
+                            <constraint firstItem="7WE-NX-cN5" firstAttribute="bottom" secondItem="Q83-9A-TeQ" secondAttribute="bottom" id="b7C-xa-07m"/>
+                            <constraint firstItem="Q83-9A-TeQ" firstAttribute="top" secondItem="7WE-NX-cN5" secondAttribute="top" id="pke-Hm-Kqi"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Images" image="photo.on.rectangle" catalog="system" selectedImage="photo.fill.on.rectangle.fill" id="n2x-Jx-lUP"/>
+                    <connections>
+                        <outlet property="photoCollectionView" destination="Q83-9A-TeQ" id="snf-Xm-p1j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYb-Ln-lmH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="581" y="-181"/>
+            <point key="canvasLocation" x="579.71014492753625" y="-181.47321428571428"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ChT-nR-FZA">
@@ -62,6 +147,7 @@
     <resources>
         <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="97"/>
         <image name="photo.on.rectangle" catalog="system" width="128" height="97"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.bubble" catalog="system" width="128" height="110"/>
         <image name="star.bubble.fill" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">

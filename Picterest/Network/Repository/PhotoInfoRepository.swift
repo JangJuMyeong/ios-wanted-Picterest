@@ -11,7 +11,7 @@ import UIKit
 class PhotoInfoRepository {
     private let provider: Provider
     private var imageCache = NSCache<NSURL,NSData>()
-    private var currentPage: Int = 0
+    private var currentPage: Int = 1
     
     init(provider: Provider = ProviderImpl()) {
         self.provider = provider
@@ -23,13 +23,13 @@ class PhotoInfoRepository {
         currentPage += 1
         provider.request(with: endpoint) { result in
             switch result {
-            case .success(let responesDTO) :
+            case .success(let responesDTO):
                 var photoInfoList = [PhotoInfo]()
-                responesDTO.photoList.forEach { info in
+                responesDTO.forEach { info in
                     photoInfoList.append(info.toDomain())
                 }
                 completion(.success(photoInfoList))
-            case .failure(let error) :
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -39,13 +39,15 @@ class PhotoInfoRepository {
         if let url = NSURL(string: url), let data = imageCache.object(forKey: url) {
             completion(.success(data as Data))
         } else {
-            let endpoint = APIEndpoints.getImage(with: url)
-            provider.request(with: endpoint) { result in
-                switch result {
-                case .success(let data) :
-                    completion(.success(data))
-                case .failure(let error) :
-                    completion(.failure(error))
+            if let url = URL(string: url) {
+                provider.request(url) { result in
+                    switch result {
+                    case .success(let data):
+                        self.imageCache.setObject(data as NSData, forKey: url as NSURL)
+                        completion(.success(data))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
                 }
             }
         }
