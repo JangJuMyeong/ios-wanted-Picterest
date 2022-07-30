@@ -7,12 +7,6 @@
 
 import CoreData
 
-enum CoreDataStorageError: Error {
-    case readError(Error)
-    case saveError(Error)
-    case deleteError(Error)
-}
-
 final class ImageDataCoreDataStorage: CoreDataStorage{
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -52,7 +46,6 @@ final class ImageDataCoreDataStorage: CoreDataStorage{
                 try self.context.save()
                 completion(.success(true))
             } catch {
-                assertionFailure("CoreDataStorage Unresolved error \(error), \((error as NSError).userInfo)")
                 completion(.failure(CoreDataStorageError.saveError(error)))
             }
         } else {

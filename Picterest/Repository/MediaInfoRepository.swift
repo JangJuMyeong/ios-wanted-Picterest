@@ -58,19 +58,25 @@ class MediaInfoRepository {
     
     func getImageList(completion: @escaping (Result<[ImageInfo],Error>) -> Void) {
         let request: NSFetchRequest<ImageData> = ImageData.fetchRequest()
-        let fetchResult = coreDataStarge.fetch(request: request)
-        var ImageInfoList = [ImageInfo]()
-        fetchResult.forEach { imagedata in
-            guard let id = imagedata.id,
-                  let memo = imagedata.memo,
-                  let orginUrl = imagedata.orginUrl,
-                  let locationUrl = imagedata.locationUrl else {
-                completion(.failure(NetworkError.parsingError))
-                return }
-            let imageInfo = ImageInfo(id: id, memo: memo, orginUrl: orginUrl, locationUrl: locationUrl, ratio:imagedata.ratio)
-            ImageInfoList.append(imageInfo)
+        coreDataStarge.fetch(request: request) { result in
+            switch result {
+            case .success(let imageDatas) :
+                var ImageInfoList = [ImageInfo]()
+                imageDatas.forEach { imagedata in
+                    guard let id = imagedata.id,
+                          let memo = imagedata.memo,
+                          let orginUrl = imagedata.orginUrl,
+                          let locationUrl = imagedata.locationUrl else {
+                        completion(.failure(NetworkError.parsingError))
+                        return }
+                    let imageInfo = ImageInfo(id: id, memo: memo, orginUrl: orginUrl, locationUrl: locationUrl, ratio:imagedata.ratio)
+                    ImageInfoList.append(imageInfo)
+                }
+                completion(.success(ImageInfoList))
+            case .failure(let error) :
+                completion(.failure(error))
+            }
         }
-        completion(.success(ImageInfoList))
     }
     
     func loadImage(url: String, completion: @escaping (Result<Data,Error>) -> Void) {
@@ -110,25 +116,51 @@ class MediaInfoRepository {
         }
     }
     
-    func savedImage(image: UIImage, memo: String, photoInfo: PhotoInfo, completion: @escaping (Bool) -> Void) {
-        fileManger.saveImage(image: image, name: photoInfo.id) { fileName in
-            let ratio = Float(photoInfo.height) / Float(photoInfo.width)
-            let imageInfo = ImageInfo(id: photoInfo.id, memo: memo, orginUrl: photoInfo.urls.small, locationUrl: fileName,ratio: ratio)
-            let result = self.coreDataStarge.insertImageinfo(imageInfo: imageInfo)
-            completion(result)
+    func savedImage(image: UIImage, memo: String, photoInfo: PhotoInfo, completion: @escaping (Result<Bool,Error>) -> Void) {
+        fileManger.saveImage(image: image, name: photoInfo.id) { result in
+            switch result {
+            case .success(let fileName) :
+                let ratio = Float(photoInfo.height) / Float(photoInfo.width)
+                let imageInfo = ImageInfo(id: photoInfo.id, memo: memo, orginUrl: photoInfo.urls.small, locationUrl: fileName,ratio: ratio)
+                self.coreDataStarge.insertImageinfo(imageInfo: imageInfo) { result in
+                    switch result {
+                    case .success(let isSaved) :
+                        completion(.success(isSaved))
+                    case .failure(let error) :
+                        completion(.failure(error))
+                    }
+                }
+            case .failure(let error) :
+                completion(.failure(error))
+            }
         }
     }
     
-    func deleteImage(id: String) {
+    
+    
+    
+    func deleteImage(id: String, completion: @escaping (Result<Bool,Error>) -> Void) {
         fileManger.deleteImage(named: id) { result in
             print(result)
         }
         let request: NSFetchRequest<ImageData> = ImageData.fetchRequest()
-        let fetchResult = coreDataStarge.fetch(request: request)
-        let index = fetchResult.firstIndex { $0.id == id}
-        if let index = index {
-            _ = coreDataStarge.delete(object: fetchResult[index])
+        coreDataStarge.fetch(request: request) { result in
+            switch result {
+            case .success(let imageDatas) :
+                let index = imageDatas.firstIndex { $0.id == id}
+                if let index = index {
+                    self.coreDataStarge.delete(object: imageDatas[index]) { result in
+                        switch result {
+                        case .success(let isDelete) :
+                            completion(.success(isDelete))
+                        case .failure(let error) :
+                            completion(.failure(error))
+                        }
+                    }
+                }
+            case .failure(let error) :
+                completion(.failure(error))
+            }
         }
-        
     }
 }

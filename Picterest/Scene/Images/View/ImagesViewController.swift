@@ -10,9 +10,7 @@ class ImagesViewController: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     let viewModel = ImagesViewModel()
-    let fileManger = ImageFileManger()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setInit()
@@ -29,7 +27,16 @@ class ImagesViewController: UIViewController {
     }
 
     private func setData() {
-        viewModel.viewImageList()
+        viewModel.viewImageList { result in
+            switch result {
+            case .success(let isSucess) :
+                if isSucess {
+                    print("Sucess To Get ImageList")
+                }
+            case .failure(let error) :
+                self.popupAlert(title: "에러", message: "에러가 발생했습니다", error: error)
+            }
+        }
         viewModel.photoList.bind { photoList in
             DispatchQueue.main.async {
                 self.photoCollectionView.reloadSections(IndexSet(integer: 0))
@@ -100,7 +107,16 @@ extension ImagesViewController: UICollectionViewDelegate, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > photoCollectionView.contentSize.height - scrollView.frame.size.height {
-            viewModel.viewImageList()
+            viewModel.viewImageList { result in
+                switch result {
+                case .success(let isSucess) :
+                    if isSucess {
+                        print("Sucess To Get ImageList")
+                    }
+                case .failure(let error) :
+                    self.popupAlert(title: "에러", message: "에러가 발생했습니다", error: error)
+                }
+            }
         }
     }
 }

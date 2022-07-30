@@ -15,10 +15,10 @@ class ImagesViewModel {
     var sendError: ((Error) -> Void)?
     
     subscript(indexPath: IndexPath) -> PhotoInfo {
-      return photoList.value[indexPath.row]
+        return photoList.value[indexPath.row]
     }
     
-    func viewImageList(completion:@escaping (Result<Bool,Error>) -> Void) {
+    func viewImageList() {
         if viewState.value == .idle {
             viewState.value = .isLoding
             repository.getPhotoList { result in
@@ -26,9 +26,8 @@ class ImagesViewModel {
                 case .success(let photoInfos):
                     self.photoList.value.append(contentsOf: photoInfos)
                     self.viewState.value = .idle
-                    completion(.success(true))
                 case .failure(let error):
-                    completion(.failure(error))
+                    print(error)
                 }
             }
         }
@@ -51,16 +50,29 @@ class ImagesViewModel {
     
     func savedImage(image: UIImage, memo: String, photoInfo: PhotoInfo) {
         repository.savedImage(image: image, memo: memo, photoInfo: photoInfo) { result in
-            if result {
-                NotificationCenter.default.post(name: .imageDataStatusChange, object: nil)
-            } else {
-                //에러 핸들링
+            switch result {
+            case .success(let isSaved) :
+                if isSaved {
+                    NotificationCenter.default.post(name: .imageDataStatusChange, object: nil)
+                }
+            case .failure(let error) :
+                print(error)
             }
+            
         }
     }
     
     func deleteImage(id: String) {
-        repository.deleteImage(id: id)
-        NotificationCenter.default.post(name: .imageDataStatusChange, object: nil)
+        repository.deleteImage(id: id,completion: { result in
+            switch result {
+            case .success(let isDeleted) :
+                if isDeleted {
+                    NotificationCenter.default.post(name: .imageDataStatusChange, object: nil)
+                }
+            case .failure(let error) :
+                print(error)
+            }
+        })
+        
     }
 }

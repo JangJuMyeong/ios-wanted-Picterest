@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-enum ImageFileMangerError: Error {
-    case readError(Error)
-    case saveError(Error)
-    case deleteError(Error)
-}
-
 final class ImageFileManger: FileManged {
     
     func saveImage(image: UIImage, name: String,
@@ -32,7 +26,6 @@ final class ImageFileManger: FileManged {
                     completion(.success(fileName.lastPathComponent))
                 }
             } catch let error as NSError {
-                print("Could not saveImage: \(error), \(error.userInfo)")
                 completion(.failure(ImageFileMangerError.saveError(error)))
             }
         }
@@ -72,7 +65,6 @@ final class ImageFileManger: FileManged {
                 }
             }
         } catch let error as NSError {
-            print("Could not deleteImage: \(error), \(error.userInfo)")
             completion(.failure(ImageFileMangerError.deleteError(error)))
         }
     }

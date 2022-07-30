@@ -18,10 +18,19 @@ class SavedViewModel {
     }
     
     func deleteImage(id: String) {
-        repository.deleteImage(id: id)
-        if let index = imageInfoList.value.firstIndex(where: {$0.id == id}){
-            imageInfoList.value.remove(at: index)
+        repository.deleteImage(id: id) { [weak self] result in
+            switch result {
+            case .success(let isDeleted) :
+                if isDeleted {
+                    if let index = self?.imageInfoList.value.firstIndex(where: {$0.id == id}){
+                        self?.imageInfoList.value.remove(at: index)
+                    }
+                }
+            case .failure(let error) :
+                print(error)
+            }
         }
+        
     }
     
     func viewImageList() {
@@ -45,5 +54,5 @@ class SavedViewModel {
             }
         }
     }
-
+    
 }
