@@ -33,9 +33,6 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fVK-Uz-ShS">
                                 <rect key="frame" x="0.0" y="89" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="724" id="yzE-He-qXm"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iZe-dS-4mF">
                                     <size key="itemSize" width="277" height="390"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -123,7 +120,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved" image="star.bubble" catalog="system" selectedImage="star.bubble.fill" id="VQS-iH-f7R"/>
                     <connections>
-                        <outlet property="collectionViewHeight" destination="yzE-He-qXm" id="Ko8-D3-kvQ"/>
                         <outlet property="savedCollectionView" destination="fVK-Uz-ShS" id="Wpf-Wr-7fZ"/>
                     </connections>
                 </viewController>
