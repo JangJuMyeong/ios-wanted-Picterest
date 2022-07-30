@@ -21,7 +21,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     weak var viewController: UIViewController?
     private var cornerRadius: CGFloat = 15
-    var acceptSaveMemo : ((String) -> Void)?
+    var acceptSaveMemo: ((String) -> Void)?
     var cancleSaveImage: (() -> Void)?
     
     override func awakeFromNib() {

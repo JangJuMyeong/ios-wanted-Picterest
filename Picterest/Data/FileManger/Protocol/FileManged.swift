@@ -8,8 +8,7 @@
 import UIKit
 
 protocol FileManged {
-    func saveImage(image: UIImage, name: String,
-                   completion: @escaping ((Result<String,Error>) -> Void))
+    func saveImage(image: UIImage, name: String, completion: @escaping ((Result<String,Error>) -> Void))
     func getSavedImage(named: String) -> UIImage?
     func deleteImage(named: String, completion: @escaping ((Result<Bool,Error>) -> Void))
 }

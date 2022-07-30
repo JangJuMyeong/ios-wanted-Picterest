@@ -30,14 +30,13 @@ class SavedViewModel {
                 print(error)
             }
         }
-        
     }
     
     func viewImageList() {
-        repository.getImageList { result in
+        repository.getImageList { [weak self] result in
             switch result {
             case .success(let imageList):
-                self.imageInfoList.value = imageList
+                self?.imageInfoList.value = imageList
             case .failure(let error):
                 print(error)
             }

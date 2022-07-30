@@ -13,8 +13,9 @@ class MediaInfoRepository {
     private let provider: Provider
     private let fileManger: FileManged
     private let coreDataStarge: CoreDataStorage
-    private var imageCache = NSCache<NSURL,NSData>()
     private var currentPage: Int = 1
+    private var imageCache = NSCache<NSURL,NSData>()
+    
     
     init(provider: Provider = ProviderImpl(),
          filemanger: FileManged = ImageFileManger(),
@@ -42,14 +43,14 @@ class MediaInfoRepository {
                                 if imageData.id == model.id {
                                     model.isSaved = true
                                 }
-                                photoInfoList.append(model)
                             }
-                            completion(.success(photoInfoList))
+                            photoInfoList.append(model)
                         case .failure(let error):
                             completion(.failure(error))
                         }
                     }
                 }
+                completion(.success(photoInfoList))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -135,9 +136,6 @@ class MediaInfoRepository {
             }
         }
     }
-    
-    
-    
     
     func deleteImage(id: String, completion: @escaping (Result<Bool,Error>) -> Void) {
         fileManger.deleteImage(named: id) { result in

@@ -14,7 +14,7 @@ class ProviderImpl: Provider {
         self.session = session
     }
     
-    func request<R, E>(with endpoint: E, completion: @escaping (Result<R, Error>) -> Void) where R : Decodable, R == E.Response, E : RequesteResponsable {
+    func request<R, E>(with endpoint: E, completion: @escaping (Result<R, Error>) -> Void) where R : Decodable, R == E.Response, E : RequestResponsable {
         do {
             let urlRequest = try endpoint.getUrlRequest()
             

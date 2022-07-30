@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct PhotoInfoResponseDTO : Codable {
-    let id : String
-    let width : Int
-    let height : Int
-    let urls : Urls
-    let links : Links
+struct PhotoInfoResponseDTO: Codable {
+    let id: String
+    let width: Int
+    let height: Int
+    let urls: Urls
+    let links: Links
 }
 
-struct Urls : Codable {
-    let raw : String
-    let full : String
-    let regular : String
-    let small : String
-    let thumb : String
+struct Urls: Codable {
+    let raw: String
+    let full: String
+    let regular: String
+    let small: String
+    let thumb: String
     let smalls3: String
     
     enum CodingKeys: String, CodingKey {
@@ -29,11 +29,11 @@ struct Urls : Codable {
     }
 }
 
-struct Links : Codable {
-    let unsplash : String
-    let html : String
-    let download : String
-    let downloadLocation : String
+struct Links: Codable {
+    let unsplash: String
+    let html: String
+    let download: String
+    let downloadLocation: String
     
     enum CodingKeys: String, CodingKey {
         case unsplash = "self"

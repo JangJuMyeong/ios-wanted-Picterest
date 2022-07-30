@@ -13,7 +13,7 @@ protocol PhotoCollectionViewLayoutDelegate: AnyObject {
 
 class PhotoCollectionViewLayout: UICollectionViewLayout {
     
-    weak var delegate : PhotoCollectionViewLayoutDelegate?
+    weak var delegate: PhotoCollectionViewLayoutDelegate?
     
     private var numberOfColumns: Int = 2
     private var cellPadding: CGFloat = 3.0

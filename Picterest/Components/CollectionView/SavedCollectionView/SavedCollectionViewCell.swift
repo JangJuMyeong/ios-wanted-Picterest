@@ -26,7 +26,7 @@ class SavedCollectionViewCell: UICollectionViewCell {
         self.contentView.addGestureRecognizer(longPressGesture)
         longPressGesture.addTarget(self, action: #selector(cancleSaved))
     }
-
+    
     
     @objc func cancleSaved() {
         viewController?.present(showCancleAlert(),animated: true)

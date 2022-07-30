@@ -14,10 +14,6 @@ struct APIEndpoints {
                         queryParameters: photoInfoRequestDTO,
                         headers: ["Authorization": "Client-ID \(Constants.accessKey)"])
     }
-
-    static func getImage(with url: String) -> EndPoint<Data> {
-        return EndPoint(baseURL: url)
-    }
 }
 
 

@@ -8,5 +8,5 @@
 import Foundation
 
 struct Constants {
-    static let accessKey = "PFfQr06n47KfcPkDr_gdONLRhWy2XCyFJTrPeh7lJz"
+    static let accessKey = "PFfQr06n47KfcPkDr_gdONLRhWy2XCyFJTrPeh7lJzA"
 }

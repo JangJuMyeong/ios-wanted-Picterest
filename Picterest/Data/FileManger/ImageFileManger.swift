@@ -8,15 +8,12 @@
 import Foundation
 import UIKit
 
-final class ImageFileManger: FileManged {
+class ImageFileManger: FileManged {
     
     func saveImage(image: UIImage, name: String,
                    completion: @escaping ((Result<String,Error>) -> Void)) {
-        guard let data: Data
-                = image.jpegData(compressionQuality: 1)
-                ?? image.pngData() else { return }
-        if let directory: NSURL =
-            try? FileManager.default.url(for: .documentDirectory,
+        guard let data: Data = image.jpegData(compressionQuality: 1) ?? image.pngData() else { return }
+        if let directory: NSURL = try? FileManager.default.url(for: .documentDirectory,
                                          in: .userDomainMask,
                                          appropriateFor: nil,
                                          create: false) as NSURL {
@@ -50,8 +47,7 @@ final class ImageFileManger: FileManged {
         guard let directory = try? FileManager.default.url(for: .documentDirectory,
                                              in: .userDomainMask,
                                              appropriateFor: nil,
-                                             create: false) as NSURL
-        else { return }
+                                             create: false) as NSURL else { return }
         do {
             if let docuPath = directory.path {
                 let fileNames = try FileManager.default.contentsOfDirectory(atPath: docuPath)

@@ -7,7 +7,7 @@
 
 import CoreData
 
-final class ImageDataCoreDataStorage: CoreDataStorage{
+class ImageDataCoreDataStorage: CoreDataStorage{
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ImageData")

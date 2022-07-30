@@ -16,13 +16,13 @@ enum NetworkError: Error{
     case parsingError
     case decodingError(Error)
     
-    var errorDescription : String {
+    var errorDescription: String {
         switch self {
-        case .unknownError :
+        case .unknownError:
             return "알수 없는 에러입니다."
         case .urlRequestError:
             return "URL Request 관련 에러가 발생했습니다."
-        case .componentsError :
+        case .componentsError:
             return "URL components 관련 에러가 발생했습니다."
         case .serverError(let serverError):
             return "Status코드 에러입니다. \(serverError) Code: \(serverError.rawValue)"
@@ -36,7 +36,7 @@ enum NetworkError: Error{
     }
 }
 
-enum ServerError : Int {
+enum ServerError: Int {
     case unkonown
     case badRequest = 400
     case unauthorized = 401

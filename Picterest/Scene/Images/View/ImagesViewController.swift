@@ -6,18 +6,18 @@
 import UIKit
 
 class ImagesViewController: UIViewController {
-
+    
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     let viewModel = ImagesViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setInit()
+        setCollectionView()
         setData()
     }
     
-    private func setInit() {
+    private func setCollectionView() {
         let layout = PhotoCollectionViewLayout()
         layout.delegate = self
         self.photoCollectionView.collectionViewLayout = layout
@@ -25,21 +25,12 @@ class ImagesViewController: UIViewController {
         self.photoCollectionView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(deletImage(_:)), name: .cancleSavedImage, object: nil)
     }
-
+    
     private func setData() {
-        viewModel.viewImageList { result in
-            switch result {
-            case .success(let isSucess) :
-                if isSucess {
-                    print("Sucess To Get ImageList")
-                }
-            case .failure(let error) :
-                self.popupAlert(title: "에러", message: "에러가 발생했습니다", error: error)
-            }
-        }
-        viewModel.photoList.bind { photoList in
+        viewModel.viewPhotoList()
+        viewModel.photoList.bind { [weak self] photoList in
             DispatchQueue.main.async {
-                self.photoCollectionView.reloadSections(IndexSet(integer: 0))
+                self?.photoCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
     }
@@ -52,7 +43,7 @@ class ImagesViewController: UIViewController {
                 self.photoCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
-     }
+    }
 }
 
 //MARK: - PhotoCollectionViewLayout
@@ -77,8 +68,9 @@ extension ImagesViewController: UICollectionViewDataSource {
         cell.viewController = self
         cell.photoCountLabel.text = "\(indexPath.row)번째 사진"
         cell.setButtonImage(isSaved: model.isSaved)
-        cell.cancleSaveImage = {
-            self.viewModel.deleteImage(id: model.id)
+        cell.cancleSaveImage = { [weak self] in
+            self?.viewModel.photoList.value[indexPath.row].isSaved = false
+            self?.viewModel.deleteImage(id: model.id)
         }
         cell.acceptSaveMemo = { [weak self] memo in
             self?.viewModel.photoList.value[indexPath.row].isSaved = true
@@ -107,19 +99,9 @@ extension ImagesViewController: UICollectionViewDelegate, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > photoCollectionView.contentSize.height - scrollView.frame.size.height {
-            viewModel.viewImageList { result in
-                switch result {
-                case .success(let isSucess) :
-                    if isSucess {
-                        print("Sucess To Get ImageList")
-                    }
-                case .failure(let error) :
-                    self.popupAlert(title: "에러", message: "에러가 발생했습니다", error: error)
-                }
-            }
+            viewModel.viewPhotoList()
         }
     }
 }
-
 
 

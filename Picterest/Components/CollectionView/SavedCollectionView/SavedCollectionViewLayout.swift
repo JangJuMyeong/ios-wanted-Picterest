@@ -13,7 +13,7 @@ protocol SavedCollectionViewLayoutDelegate: AnyObject {
 
 class SavedCollectionViewLayout: UICollectionViewLayout {
     
-    weak var delegate : SavedCollectionViewLayoutDelegate?
+    weak var delegate: SavedCollectionViewLayoutDelegate?
     
     private var numberOfColumns: Int = 1
     private var cellPadding: CGFloat = 12.0
@@ -60,8 +60,7 @@ class SavedCollectionViewLayout: UICollectionViewLayout {
             attributes.frame = insetFrame
             cache.append(attributes)
             
-            // 새로 계산된 항목의 프레임을 설명하도록 확장
-            contentHeight = max(contentHeight, frame.maxY)
+            contentHeight = frame.maxY
             yOffset[column] = yOffset[column] + height
             
             // 다음 항목이 다음 열에 배치되도록 설정

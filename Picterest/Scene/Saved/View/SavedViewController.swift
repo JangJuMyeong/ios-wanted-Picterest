@@ -10,18 +10,25 @@ import UIKit
 class SavedViewController: UIViewController {
     
     @IBOutlet weak var savedCollectionView: UICollectionView!
-    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     let viewModel = SavedViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setData()
+        setCollectionView()
+    }
+    
+    private func setData() {
         viewModel.viewImageList()
-        viewModel.imageInfoList.bind { imageInfoList in
+        viewModel.imageInfoList.bind { [weak self] imageInfoList in
             DispatchQueue.main.async {
-                self.savedCollectionView.reloadData()
+                self?.savedCollectionView.reloadData()
             }
         }
+    }
+    
+    private func setCollectionView() {
         let layout = SavedCollectionViewLayout()
         layout.delegate = self
         savedCollectionView.collectionViewLayout = layout
@@ -49,8 +56,8 @@ extension SavedViewController: UICollectionViewDataSource {
         
         cell.viewController = self
         cell.memoLabel.text = model.memo
-        cell.deletImage = {
-            self.viewModel.deleteImage(id: model.id)
+        cell.deletImage = { [weak self] in
+            self?.viewModel.deleteImage(id: model.id)
             NotificationCenter.default.post(name: .cancleSavedImage, object: model)
         }
         viewModel.loadLocalImage(imageInfo: model) { result in

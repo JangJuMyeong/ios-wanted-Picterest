@@ -11,24 +11,18 @@ import UIKit
 class ImagesViewModel {
     private let repository = MediaInfoRepository()
     var photoList = Observable<[PhotoInfo]>([])
-    var viewState = Observable<ViewState>(ViewState.idle)
-    var sendError: ((Error) -> Void)?
     
     subscript(indexPath: IndexPath) -> PhotoInfo {
         return photoList.value[indexPath.row]
     }
     
-    func viewImageList() {
-        if viewState.value == .idle {
-            viewState.value = .isLoding
-            repository.getPhotoList { result in
-                switch result {
-                case .success(let photoInfos):
-                    self.photoList.value.append(contentsOf: photoInfos)
-                    self.viewState.value = .idle
-                case .failure(let error):
-                    print(error)
-                }
+    func viewPhotoList() {
+        repository.getPhotoList { [weak self] result in
+            switch result {
+            case .success(let photoInfos):
+                self?.photoList.value.append(contentsOf: photoInfos)
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -75,4 +69,5 @@ class ImagesViewModel {
         })
         
     }
+    
 }

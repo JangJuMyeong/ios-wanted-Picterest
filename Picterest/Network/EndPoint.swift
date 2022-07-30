@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol RequesteResponsable: Requestable, Responsable {}
+protocol RequestResponsable: Requestable, Responsable {}
 
-struct EndPoint<R>: RequesteResponsable {
+struct EndPoint<R>: RequestResponsable {
     typealias Response = R
     var baseURL: String
     var path: String
