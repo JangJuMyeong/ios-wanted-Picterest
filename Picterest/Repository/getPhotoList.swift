@@ -7,22 +7,76 @@
 
 import Foundation
 import UIKit
+import RxSwift
 import CoreData
 
 class MediaInfoRepository {
     private let provider: Provider
+    private let providerAF: ProviderAF
     private let fileManger: FileManged
     private let coreDataStarge: CoreDataStorage
-    private var currentPage: Int = 1
+    private var currentPage: Int = 0
     private var imageCache = NSCache<NSURL,NSData>()
     
     
     init(provider: Provider = ProviderImpl(),
          filemanger: FileManged = ImageFileManger(),
-         coreDataStarge: CoreDataStorage = ImageDataCoreDataStorage()) {
+         coreDataStarge: CoreDataStorage = ImageDataCoreDataStorage(), AF: ProviderAF = ProviderImplAF()) {
         self.provider = provider
         self.fileManger = filemanger
         self.coreDataStarge = coreDataStarge
+        self.providerAF = AF
+    }
+    
+    private func getPhotoListInfo() -> Observable<[PhotoInfoResponseDTO]> {
+        currentPage += 1
+        let photoListRequestDTO = PhotoInfoRequestDTO(page: currentPage)
+        return providerAF.request(with: PhotoListTarget.getPhotoList(photoListRequestDTO))
+    }
+    
+    func getImageData(_ url: String) -> Observable<UIImage>? {
+        if let url = NSURL(string: url), let data = imageCache.object(forKey: url) {
+            return Observable<Data>.just(data as Data)
+                .map { data in
+                    guard let image = UIImage(data: data) else { return UIImage() }
+                    return image
+                }
+        } else {
+            if let url = URL(string: url) {
+                return providerAF.request(url)
+                    .map { data in
+                        guard let image = UIImage(data: data) else { return UIImage() }
+                        return image
+                    }
+            }
+        }
+        
+        return nil
+    }
+    
+    func getPhotoList() -> Observable<[PhotoInfo]> {
+        return getPhotoListInfo()
+            .map { responseDTO in
+                var photoInfoList = [PhotoInfo]()
+                responseDTO.forEach { info in
+                    var model = info.toDomain()
+                    let request: NSFetchRequest<ImageData> = ImageData.fetchRequest()
+                    self.coreDataStarge.fetch(request: request) { result in
+                        switch result {
+                        case .success(let imageDatas):
+                            imageDatas.forEach { imageData in
+                                if imageData.id == model.id {
+                                    model.isSaved = true
+                                }
+                            }
+                            photoInfoList.append(model)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
+                return photoInfoList
+            }
     }
     
     func getPhotoList(completion: @escaping (Result<[PhotoInfo],Error>) -> Void) {
