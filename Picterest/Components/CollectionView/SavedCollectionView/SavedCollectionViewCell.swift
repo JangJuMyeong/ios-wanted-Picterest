@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SavedCollectionViewCell: UICollectionViewCell {
     
@@ -16,6 +17,7 @@ class SavedCollectionViewCell: UICollectionViewCell {
     
     weak var viewController: UIViewController?
     private var cornerRadius: CGFloat = 15
+    
     var deletImage : (() -> Void)?
     
     override func awakeFromNib() {

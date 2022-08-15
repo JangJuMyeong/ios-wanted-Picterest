@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150F2E9AA5D62F3A4D7488BB /* Pods_Picterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC67504F45362BDD52AB07D2 /* Pods_Picterest.framework */; };
 		B74170D1288EBAEA0087703C /* PhotoInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74170D0288EBAEA0087703C /* PhotoInfoResponseDTO.swift */; };
 		B74170D3288EBAF80087703C /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74170D2288EBAF80087703C /* PhotoInfo.swift */; };
 		B74170D5288EBC910087703C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74170D4288EBC910087703C /* NetworkError.swift */; };
@@ -21,11 +22,16 @@
 		B7417107288FAFDE0087703C /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7417106288FAFDE0087703C /* URLSessionable.swift */; };
 		B7417109288FB0670087703C /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7417108288FB0670087703C /* URLSession+.swift */; };
 		B741710B288FB52B0087703C /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741710A288FB52B0087703C /* Decoder.swift */; };
-		B741710E288FB83D0087703C /* MediaInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741710D288FB83D0087703C /* MediaInfoRepository.swift */; };
+		B741710E288FB83D0087703C /* getPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B741710D288FB83D0087703C /* getPhotoList.swift */; };
 		B7417112288FC0360087703C /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7417111288FC0360087703C /* APIEndPoints.swift */; };
+		B760EA8528A5565100498245 /* PhotoListTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760EA8428A5565100498245 /* PhotoListTarget.swift */; };
+		B760EA8728A556AC00498245 /* PhotoSearchRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760EA8628A556AC00498245 /* PhotoSearchRequestDTO.swift */; };
 		B772EEA02890478200B65AAC /* PhotoCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EE9F2890478200B65AAC /* PhotoCollectionViewLayout.swift */; };
 		B772EEA22890F23800B65AAC /* PhotoCollectionIndecatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B772EEA12890F23800B65AAC /* PhotoCollectionIndecatorView.swift */; };
-		B7939EA9288FCFFC00C478E2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EA8288FCFFC00C478E2 /* Observable.swift */; };
+		B7783EBC28A4EB5D0000020F /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7783EBB28A4EB5D0000020F /* TargetType.swift */; };
+		B7861F4B28A7D95D005552DB /* ProviderImplAF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861F4A28A7D95D005552DB /* ProviderImplAF.swift */; };
+		B7861F4D28A7D977005552DB /* ProviderAF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861F4C28A7D977005552DB /* ProviderAF.swift */; };
+		B7939EA9288FCFFC00C478E2 /* MyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EA8288FCFFC00C478E2 /* MyObservable.swift */; };
 		B7939EAB288FD01500C478E2 /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EAA288FD01500C478E2 /* ImagesViewModel.swift */; };
 		B7939EAD288FD0BF00C478E2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */; };
 		B7939EAF288FD0CB00C478E2 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7939EAE288FD0CB00C478E2 /* SavedViewModel.swift */; };
@@ -52,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D53C2968AF202F396B38181 /* Pods-Picterest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Picterest.debug.xcconfig"; path = "Target Support Files/Pods-Picterest/Pods-Picterest.debug.xcconfig"; sourceTree = "<group>"; };
+		932B67A96A3B7323C166D3B4 /* Pods-Picterest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Picterest.release.xcconfig"; path = "Target Support Files/Pods-Picterest/Pods-Picterest.release.xcconfig"; sourceTree = "<group>"; };
 		B74170D0288EBAEA0087703C /* PhotoInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoResponseDTO.swift; sourceTree = "<group>"; };
 		B74170D2288EBAF80087703C /* PhotoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
 		B74170D4288EBC910087703C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -66,11 +74,16 @@
 		B7417106288FAFDE0087703C /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
 		B7417108288FB0670087703C /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
 		B741710A288FB52B0087703C /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
-		B741710D288FB83D0087703C /* MediaInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInfoRepository.swift; sourceTree = "<group>"; };
+		B741710D288FB83D0087703C /* getPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getPhotoList.swift; sourceTree = "<group>"; };
 		B7417111288FC0360087703C /* APIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
+		B760EA8428A5565100498245 /* PhotoListTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListTarget.swift; sourceTree = "<group>"; };
+		B760EA8628A556AC00498245 /* PhotoSearchRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchRequestDTO.swift; sourceTree = "<group>"; };
 		B772EE9F2890478200B65AAC /* PhotoCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B772EEA12890F23800B65AAC /* PhotoCollectionIndecatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionIndecatorView.swift; sourceTree = "<group>"; };
-		B7939EA8288FCFFC00C478E2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		B7783EBB28A4EB5D0000020F /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		B7861F4A28A7D95D005552DB /* ProviderImplAF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderImplAF.swift; sourceTree = "<group>"; };
+		B7861F4C28A7D977005552DB /* ProviderAF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAF.swift; sourceTree = "<group>"; };
+		B7939EA8288FCFFC00C478E2 /* MyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObservable.swift; sourceTree = "<group>"; };
 		B7939EAA288FD01500C478E2 /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
 		B7939EAC288FD0BF00C478E2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		B7939EAE288FD0CB00C478E2 /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewModel.swift; sourceTree = "<group>"; };
@@ -88,6 +101,7 @@
 		B7F0D55C2892AA4F006E2DA0 /* ImageData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B7F0D55F2892CB01006E2DA0 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		B7F0D56128936006006E2DA0 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		BC67504F45362BDD52AB07D2 /* Pods_Picterest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Picterest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE15E65828604278003DD2F5 /* Picterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE15E65B28604278003DD2F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE15E65D28604278003DD2F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,18 +117,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				150F2E9AA5D62F3A4D7488BB /* Pods_Picterest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F7DBE5E98603AFB4852DECC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC67504F45362BDD52AB07D2 /* Pods_Picterest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88EB8DAD62A1FC886BA2986D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D53C2968AF202F396B38181 /* Pods-Picterest.debug.xcconfig */,
+				932B67A96A3B7323C166D3B4 /* Pods-Picterest.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B74170CE288EBAC50087703C /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				B74170FD288FA41C0087703C /* DTO */,
 				B74170DD288ECE460087703C /* EndPoint.swift */,
+				B760EA8428A5565100498245 /* PhotoListTarget.swift */,
 				B7417104288FAFA40087703C /* ProviderImpl.swift */,
+				B7861F4A28A7D95D005552DB /* ProviderImplAF.swift */,
 				B74170D4288EBC910087703C /* NetworkError.swift */,
 				B74170D6288EBDFF0087703C /* Protocols */,
 			);
@@ -136,7 +170,9 @@
 				B74170D9288EBE2B0087703C /* Requestable.swift */,
 				B74170DB288EBE720087703C /* Responsable.swift */,
 				B7417102288FACEB0087703C /* Provider.swift */,
+				B7861F4C28A7D977005552DB /* ProviderAF.swift */,
 				B7417106288FAFDE0087703C /* URLSessionable.swift */,
+				B7783EBB28A4EB5D0000020F /* TargetType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -145,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				B741710A288FB52B0087703C /* Decoder.swift */,
-				B7939EA8288FCFFC00C478E2 /* Observable.swift */,
+				B7939EA8288FCFFC00C478E2 /* MyObservable.swift */,
 				B7417100288FA4ED0087703C /* Constants.swift */,
 				B74170E0288ECFEF0087703C /* Extension */,
 			);
@@ -167,6 +203,7 @@
 			children = (
 				B74170D0288EBAEA0087703C /* PhotoInfoResponseDTO.swift */,
 				B74170FE288FA43F0087703C /* PhotoInfoRequestDTO.swift */,
+				B760EA8628A556AC00498245 /* PhotoSearchRequestDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -174,7 +211,7 @@
 		B741710C288FB8150087703C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				B741710D288FB83D0087703C /* MediaInfoRepository.swift */,
+				B741710D288FB83D0087703C /* getPhotoList.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -344,6 +381,8 @@
 			children = (
 				DE15E65A28604278003DD2F5 /* Picterest */,
 				DE15E65928604278003DD2F5 /* Products */,
+				88EB8DAD62A1FC886BA2986D /* Pods */,
+				3F7DBE5E98603AFB4852DECC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -382,9 +421,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE15E66C28604279003DD2F5 /* Build configuration list for PBXNativeTarget "Picterest" */;
 			buildPhases = (
+				95F658476E85CFA22D5E473A /* [CP] Check Pods Manifest.lock */,
 				DE15E65428604278003DD2F5 /* Sources */,
 				DE15E65528604278003DD2F5 /* Frameworks */,
 				DE15E65628604278003DD2F5 /* Resources */,
+				63F6AAAB51F0FFD33CB2C37F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -441,12 +482,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		63F6AAAB51F0FFD33CB2C37F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Picterest/Pods-Picterest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Picterest/Pods-Picterest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Picterest/Pods-Picterest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95F658476E85CFA22D5E473A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Picterest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE15E65428604278003DD2F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B741710B288FB52B0087703C /* Decoder.swift in Sources */,
+				B7861F4B28A7D95D005552DB /* ProviderImplAF.swift in Sources */,
 				B7F0D5602892CB01006E2DA0 /* Notification+.swift in Sources */,
 				B772EEA02890478200B65AAC /* PhotoCollectionViewLayout.swift in Sources */,
 				B7F0D55828929485006E2DA0 /* SavedCollectionViewCell.swift in Sources */,
@@ -454,6 +538,7 @@
 				B7C094782894C81700C8E0EB /* ImageFileMangerError.swift in Sources */,
 				B7417107288FAFDE0087703C /* URLSessionable.swift in Sources */,
 				B74170FF288FA43F0087703C /* PhotoInfoRequestDTO.swift in Sources */,
+				B760EA8528A5565100498245 /* PhotoListTarget.swift in Sources */,
 				B7F0D55128927688006E2DA0 /* ImageFileManger.swift in Sources */,
 				B7F0D53F289271DA006E2DA0 /* ImageData.xcdatamodeld in Sources */,
 				B7F0D55E2892AA4F006E2DA0 /* ImageData+CoreDataProperties.swift in Sources */,
@@ -461,18 +546,21 @@
 				B7F0D554289277A5006E2DA0 /* FileManged.swift in Sources */,
 				B7F0D54E289275B1006E2DA0 /* ImageDataCoreDataStorage.swift in Sources */,
 				B74170DC288EBE720087703C /* Responsable.swift in Sources */,
+				B760EA8728A556AC00498245 /* PhotoSearchRequestDTO.swift in Sources */,
 				B7939EAB288FD01500C478E2 /* ImagesViewModel.swift in Sources */,
 				DE15E66028604278003DD2F5 /* ImagesViewController.swift in Sources */,
 				B7939EAD288FD0BF00C478E2 /* SavedViewController.swift in Sources */,
 				B7F0D55D2892AA4F006E2DA0 /* ImageData+CoreDataClass.swift in Sources */,
 				B74170DE288ECE460087703C /* EndPoint.swift in Sources */,
+				B7783EBC28A4EB5D0000020F /* TargetType.swift in Sources */,
 				B7F0D56228936006006E2DA0 /* CoreDataStorage.swift in Sources */,
 				B74170E2288ED0010087703C /* Encodable+.swift in Sources */,
 				DE15E65C28604278003DD2F5 /* AppDelegate.swift in Sources */,
 				B74170D1288EBAEA0087703C /* PhotoInfoResponseDTO.swift in Sources */,
 				B772EEA22890F23800B65AAC /* PhotoCollectionIndecatorView.swift in Sources */,
+				B7861F4D28A7D977005552DB /* ProviderAF.swift in Sources */,
 				B7F0D55A2892A65A006E2DA0 /* SavedCollectionViewLayout.swift in Sources */,
-				B741710E288FB83D0087703C /* MediaInfoRepository.swift in Sources */,
+				B741710E288FB83D0087703C /* getPhotoList.swift in Sources */,
 				B7F0D53C28926FF8006E2DA0 /* ImageInfo.swift in Sources */,
 				B7417105288FAFA40087703C /* ProviderImpl.swift in Sources */,
 				B74170D5288EBC910087703C /* NetworkError.swift in Sources */,
@@ -480,7 +568,7 @@
 				B7C094762894C36400C8E0EB /* CoreDataStorageError.swift in Sources */,
 				B7939EB3288FD9C300C478E2 /* PhotoCollectionViewCell.swift in Sources */,
 				DE15E65E28604278003DD2F5 /* SceneDelegate.swift in Sources */,
-				B7939EA9288FCFFC00C478E2 /* Observable.swift in Sources */,
+				B7939EA9288FCFFC00C478E2 /* MyObservable.swift in Sources */,
 				B74170D3288EBAF80087703C /* PhotoInfo.swift in Sources */,
 				B7417109288FB0670087703C /* URLSession+.swift in Sources */,
 				B7939EAF288FD0CB00C478E2 /* SavedViewModel.swift in Sources */,
@@ -626,6 +714,7 @@
 		};
 		DE15E66D28604279003DD2F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D53C2968AF202F396B38181 /* Pods-Picterest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -654,6 +743,7 @@
 		};
 		DE15E66E28604279003DD2F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 932B67A96A3B7323C166D3B4 /* Pods-Picterest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

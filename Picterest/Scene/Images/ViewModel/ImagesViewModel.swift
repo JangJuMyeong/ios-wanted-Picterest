@@ -6,25 +6,25 @@
 //
 
 import Foundation
+import RxSwift
 import UIKit
+import RxRelay
 
 class ImagesViewModel {
     private let repository = MediaInfoRepository()
-    var photoList = Observable<[PhotoInfo]>([])
+    var photoList = BehaviorRelay<[PhotoInfo]>(value: [])
+    var disposeBag = DisposeBag()
     
-    subscript(indexPath: IndexPath) -> PhotoInfo {
-        return photoList.value[indexPath.row]
+    func viewPhotoListAF() {
+        repository.getPhotoList()
+            .subscribe(onNext: {
+                self.photoList.accept(self.photoList.value + $0)
+            })
+            .disposed(by: disposeBag)
     }
     
-    func viewPhotoList() {
-        repository.getPhotoList { [weak self] result in
-            switch result {
-            case .success(let photoInfos):
-                self?.photoList.value.append(contentsOf: photoInfos)
-            case .failure(let error):
-                print(error)
-            }
-        }
+    func loadImageAF(url: String) -> Observable<UIImage> {
+        return repository.getImageData(url)!
     }
     
     func loadImage(url: String, completion:@escaping (Result<UIImage,Error>) -> Void){

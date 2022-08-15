@@ -136,7 +136,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q83-9A-TeQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aFU-Qc-upi">
                                     <size key="itemSize" width="277" height="390"/>
@@ -209,19 +209,42 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbc-jp-Skk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" placeholder="검색어를 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="Cau-Z3-rmd">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="VJv-Un-ZSN">
+                                        <rect key="frame" x="364" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2Mm-vf-WhW"/>
+                                            <constraint firstAttribute="width" constant="50" id="hjH-A4-qqC"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7WE-NX-cN5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Rbc-jp-Skk" firstAttribute="leading" secondItem="7WE-NX-cN5" secondAttribute="leading" id="0JR-hx-AYs"/>
                             <constraint firstItem="7WE-NX-cN5" firstAttribute="trailing" secondItem="Q83-9A-TeQ" secondAttribute="trailing" id="8RB-3e-31V"/>
+                            <constraint firstItem="7WE-NX-cN5" firstAttribute="top" secondItem="Rbc-jp-Skk" secondAttribute="top" id="8ce-8o-rqT"/>
                             <constraint firstItem="Q83-9A-TeQ" firstAttribute="leading" secondItem="7WE-NX-cN5" secondAttribute="leading" id="AYf-WT-arW"/>
+                            <constraint firstItem="Q83-9A-TeQ" firstAttribute="top" secondItem="Rbc-jp-Skk" secondAttribute="bottom" id="Ddi-fS-Wvj"/>
+                            <constraint firstItem="Rbc-jp-Skk" firstAttribute="trailing" secondItem="7WE-NX-cN5" secondAttribute="trailing" id="Xr4-Op-LaF"/>
                             <constraint firstItem="7WE-NX-cN5" firstAttribute="bottom" secondItem="Q83-9A-TeQ" secondAttribute="bottom" id="b7C-xa-07m"/>
-                            <constraint firstItem="Q83-9A-TeQ" firstAttribute="top" secondItem="7WE-NX-cN5" secondAttribute="top" id="pke-Hm-Kqi"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Images" image="photo.on.rectangle" catalog="system" selectedImage="photo.fill.on.rectangle.fill" id="n2x-Jx-lUP"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="VJv-Un-ZSN" id="2F7-0U-W1g"/>
                         <outlet property="photoCollectionView" destination="Q83-9A-TeQ" id="snf-Xm-p1j"/>
+                        <outlet property="photoSearchBar" destination="Cau-Z3-rmd" id="RKJ-fO-xeN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYb-Ln-lmH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

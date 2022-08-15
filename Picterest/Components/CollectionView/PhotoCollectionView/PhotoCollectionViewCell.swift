@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 enum AcceptType {
     case saved
@@ -21,14 +22,34 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     weak var viewController: UIViewController?
     private var cornerRadius: CGFloat = 15
-    var acceptSaveMemo: ((String) -> Void)?
+    private var cellDisposeBag = DisposeBag()
+    let onSaveMemo: Observable<String>
+    let onCancleSaveImage: Observable<Void>
+    var acceptSaveMemo: (String) -> Void
     var cancleSaveImage: (() -> Void)?
+    
+    required init?(coder: NSCoder) {
+        let saveMemo = PublishSubject<String>()
+        let cancleSaveImage = PublishSubject<Void>()
+        acceptSaveMemo = { saveMemo.onNext($0) }
+        
+        onCancleSaveImage = cancleSaveImage
+        onSaveMemo = saveMemo
+        
+        super.init(coder: coder)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.layer.cornerRadius = cornerRadius
         contentView.layer.masksToBounds = true
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cellDisposeBag = DisposeBag()
+    }
+
     
     @IBAction func tapSaveButton(_ sender: UIButton) {
         if sender.isSelected {
@@ -95,7 +116,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let accpetSaveMemo = UIAlertAction(title: "확인", style: .default, handler: { action in
             if let memo = alert.textFields?.first?.text {
                 self.toggleSaveButton()
-                self.acceptSaveMemo?(memo)
+                self.acceptSaveMemo(memo)
             }
         })
         

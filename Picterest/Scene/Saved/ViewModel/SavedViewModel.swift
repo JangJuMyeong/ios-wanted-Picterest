@@ -11,7 +11,7 @@ import CoreData
 
 class SavedViewModel {
     private let repository = MediaInfoRepository()
-    var imageInfoList = Observable<[ImageInfo]>([])
+    var imageInfoList = MyObservable<[ImageInfo]>([])
     
     subscript(indexPath: IndexPath) -> ImageInfo {
         return imageInfoList.value[indexPath.row]
