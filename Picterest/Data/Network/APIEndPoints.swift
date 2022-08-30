@@ -12,8 +12,15 @@ struct APIEndpoints {
                         path: "photos",
                         method: .get,
                         queryParameters: photoInfoRequestDTO,
-                        headers: ["Authorization": "Client-ID \(Constants.accessKey)"])
+                        headers: ["Authorization": "Client-ID \(Constants.accessKey)"]
+                        ,sampleData: NetworkResponseMock.photoList)
     }
+    
+    static func getImage(with url: String) -> EndPoint<Data> {
+        return EndPoint(baseURL: url, sampleData: NetworkResponseMock.image)
+    }
+    
+    
 }
 
 

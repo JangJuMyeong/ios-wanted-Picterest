@@ -43,7 +43,7 @@ extension Requestable {
         return urlRequest
     }
     
-    private func makeUrl() throws -> URL {
+    func makeUrl() throws -> URL {
         let fullPath = "\(baseURL)\(path)"
         guard var urlComponents = URLComponents(string: fullPath) else { throw NetworkError.componentsError}
         
