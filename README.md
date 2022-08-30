@@ -9,7 +9,7 @@
 ## 팀원 소개 
 | [@호이](https://github.com/JangJuMyeong)| 
 | ------------------------------------------------------------------------------------------ | 
-| <img src="https://cphoto.asiae.co.kr/listimglink/6/2013051007205672589_1.jpg" width="100" height="100"/> |
+| <img src="https://user-images.githubusercontent.com/66667091/187466762-fd845131-436f-4141-8f21-cc309b74c042.jpeg" width="100" height="100"/> |
 
 
 ## ⏱️ 개발 기간 및 사용 기술
@@ -57,6 +57,8 @@
 #### - 네트워크의 핵심 모듈
 - [x] Endpoint: path, queryPramameters, bodyParameter등의 데이터 객체
 - [x] Provider: URLSession, DataTask를 이용하여 network호출이 이루어 지는 곳
+
+[Network Layer 구성](https://velog.io/@isouvezz/Swift-Network-Layer-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0)
 
 ### 앱 설계
 <img width="710" alt="스크린샷 2022-07-30 오후 6 21 36" src="https://user-images.githubusercontent.com/66667091/181904148-d294847d-0a35-48c1-aead-a406a1a1547c.png">
