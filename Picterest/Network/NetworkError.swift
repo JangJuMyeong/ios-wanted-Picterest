@@ -7,16 +7,16 @@
 
 import Foundation
 
-enum NetworkError: Error{
+enum NetworkError: LocalizedError{
     case unknownError
     case componentsError
     case urlRequestError(Error)
-    case serverError(ServerError)
+    case invalidHttpStatusCode(Int)
     case emptyData
     case parsingError
     case decodingError(Error)
     
-    var errorDescription: String {
+    var errorDescription: String? {
         switch self {
         case .unknownError:
             return "알수 없는 에러입니다."
@@ -24,8 +24,8 @@ enum NetworkError: Error{
             return "URL Request 관련 에러가 발생했습니다."
         case .componentsError:
             return "URL components 관련 에러가 발생했습니다."
-        case .serverError(let serverError):
-            return "Status코드 에러입니다. \(serverError) Code: \(serverError.rawValue)"
+        case .invalidHttpStatusCode:
+            return "status코드가 200~299가 아닙니다."
         case .emptyData:
             return "데이터가 없습니다."
         case .parsingError:
@@ -34,14 +34,4 @@ enum NetworkError: Error{
             return "Decoding 에러가 발생했습니다."
         }
     }
-}
-
-enum ServerError: Int {
-    case unkonown
-    case badRequest = 400
-    case unauthorized = 401
-    case forbidden = 403
-    case notFound = 404
-    case unsplashError = 500
-    case unsplashError2 = 503
 }
