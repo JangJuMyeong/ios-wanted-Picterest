@@ -10,25 +10,52 @@ import XCTest
 
 class PicterestNetworkTests: XCTestCase {
     
-    let provider = MediaInfoRepository()
+    var provider: Provider!
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        
-        provider.getPhotoList { <#Result<[PhotoInfo], Error>#> in
-            <#code#>
-        }
+        provider = ProviderImpl(session: MockURLSession())
     }
 
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func test_fetchPhotoList_whenSuccess_thenProcessRight() {
+        // async테스트를 위해서 XCTestExpectation 사용
+        let expectation = XCTestExpectation()
+
+        let endpoint = APIEndpoints.getPhotosInfo(with: .init(page: 1))
+        let endpointJson = endpoint.sampleData!
+        print(endpointJson)
+        let responseMock = try? JSONDecoder().decode([PhotoInfoResponseDTO].self, from: endpointJson)
+
+        provider.request(with: endpoint) { result in
+            switch result {
+            case .success(let response):
+                XCTAssertEqual(response.first?.id, responseMock?.first?.id)
+            case .failure:
+                XCTFail()
+            }
+            expectation.fulfill()
         }
+
+        wait(for: [expectation], timeout: 2.0)
+    }
+
+    func test_fetchPhotoList_whenFailed_thenProcessRight() {
+        provider = ProviderImpl(session: MockURLSession(makeRequestFail: true))
+        let expectation = XCTestExpectation()
+
+        let endpoint = APIEndpoints.getPhotosInfo(with: .init(page: 1))
+
+        provider.request(with: endpoint) { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription, "status코드가 200~299가 아닙니다.")
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 2.0)
     }
 
 }

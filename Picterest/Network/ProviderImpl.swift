@@ -54,7 +54,7 @@ class ProviderImpl: Provider {
         }
         
         guard (200...299).contains(response.statusCode) else {
-            completion(.failure(NetworkError.serverError(ServerError(rawValue: response.statusCode) ?? .unkonown)))
+            completion(.failure(NetworkError.invalidHttpStatusCode(response.statusCode)))
             return
         }
         
