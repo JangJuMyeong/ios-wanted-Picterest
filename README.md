@@ -64,7 +64,6 @@
 <img width="710" alt="스크린샷 2022-07-30 오후 6 21 36" src="https://user-images.githubusercontent.com/66667091/181904148-d294847d-0a35-48c1-aead-a406a1a1547c.png">
 
 
-## 🔀 역할 분배
 
 ### View 관련
 
@@ -86,5 +85,46 @@
 | `ImageFileManger`         | - 사용자가 저장한 이미지를 로컬에 저장, 불러오기 ,삭제한다.|
 | `MediaInfoRepository`      | - 네트워크, 로컬 데이터를 관리하는 객체입니다. <br />- 이 객체를 통해 ViewModel에서는 비지니스 로직에 집중하도록 합니다.|
 
+### Trouble Shooting
 
+- 문제점
+  - 스크롤의 위치에따라 Pagniation하게 하도록 하였지만 뚝뚝 끊어지듯이 Reload되는 현상
+- 원인
+  - 테이블 뷰 전체를 완전히 처음부터 구성하기 때문에 반응이 느리다.
+- 해결방안
+  - reloadSections를 활용하여 뷰만 다시 리로드하는 방식으로 해결 
+ 
+```swift
+private func setData() {
+        viewModel.viewPhotoList()
+        viewModel.photoList.bind { [weak self] photoList in
+            DispatchQueue.main.async {
+                self?.photoCollectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
+    }
+```
 
+### 고민한 점
+
+- 앱 설계시 만약 코드를 수정하더라도 필요한 부분을 수정할수있도록 추상화하여 코드의 재사용성을 생각하며 코딩할수 없을까?
+  - FileManger, CoreData, NetworkLayout 프로토콜로 추상화하여 의존성 주입을 시켜 재사용성을 증가시킴
+```swift
+protocol CoreDataStorage {
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>,completion: @escaping ((Result<[T],Error>) -> Void))
+    func insertImageinfo(imageInfo: ImageInfo, completion: @escaping ((Result<Bool,Error>) -> Void))
+    func delete(object: NSManagedObject, completion: @escaping ((Result<Bool,Error>) -> Void))
+}
+
+protocol FileManged {
+    func saveImage(image: UIImage, name: String, completion: @escaping ((Result<String,Error>) -> Void))
+    func getSavedImage(named: String) -> UIImage?
+    func deleteImage(named: String, completion: @escaping ((Result<Bool,Error>) -> Void))
+}
+
+protocol Provider {
+    func request<R: Decodable, E: RequestResponsable>(with endpoint: E, completion: @escaping (Result<R, Error>) -> Void) where E.Response == R
+
+    func request(_ url: URL, completion: @escaping (Result<Data, Error>) -> ())
+}
+```
